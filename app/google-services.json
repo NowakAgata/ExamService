@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "497128504673",
+    "firebase_url": "https://examservicedatabase.firebaseio.com",
+    "project_id": "examservicedatabase",
+    "storage_bucket": "examservicedatabase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497128504673:android:e230359bebef63d1525920",
+        "android_client_info": {
+          "package_name": "com.example.examservice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "497128504673-8c120n9792nsvjs49a26tpoeapss80st.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.examservice",
+            "certificate_hash": "a9d91523970485a58c40e6284ba8339de5013ef3"
+          }
+        },
+        {
+          "client_id": "497128504673-v56knjmgnbcmsu69ruguof2epb3iefml.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDoXi0VlLbg8VoWCs0VwqFI7Z9LYuIARxk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "497128504673-v56knjmgnbcmsu69ruguof2epb3iefml.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

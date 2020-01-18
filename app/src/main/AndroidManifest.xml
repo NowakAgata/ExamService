@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.examservice">
+
+    <application
+        android:name=".ApplicationClass"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".professor.AllAnswersList"></activity>
+        <activity android:name=".professor.StudentGroupsList" />
+        <activity android:name=".professor.AllStudentsList" />
+        <activity android:name=".professor.EditExam" />
+        <activity android:name=".professor.AllQuestionsList" />
+        <activity android:name=".professor.NewAnswer" />
+        <activity android:name=".professor.AddQuestion" />
+        <activity android:name=".professor.SingleExamView" />
+        <activity android:name=".professor.ExamOptions" />
+        <activity android:name=".professor.AddNewExam" />
+        <activity android:name=".professor.AllExamsList" />
+        <activity android:name=".admin.AllUsersAdapter" />
+        <activity android:name=".admin.AllUsersListActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".admin.MainAdminActivity" />
+        <activity android:name=".student.MainStudentActivity" />
+        <activity android:name=".professor.MainProfessorActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

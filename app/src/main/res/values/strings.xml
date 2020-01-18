@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Exam Service</string>
+    <string name="welcomeMessage">Welcome to our exam Service!</string>
+    <string name="chooseRoleMessage">Please choose how you want to use the application:</string>
+    <string name="professorMode">I\'m a professor</string>
+    <string name="studentMode">I\'m a student</string>
+    <string name="allFields">Please, fill all the data fields!</string>
+    <!-- professor mode strings  -->
+    <string name="professorModeWelcomeMessage">Hello professor! What would you like to do now?</string>
+    <string name="professorModeAddExam">add exam</string>
+    <string name="professorModeExamsList">your exams list</string>
+    <string name="professorModeAddStudent">add student</string>
+    <string name="somethingWrong">Something went wrong, sorry.</string>
+    <!-- student mode strings -->
+
+
+    <string-array name="rolesArray">
+        <item>Student</item>
+        <item>Professor</item>
+        <item>Admin</item>
+    </string-array>
+
+    <string-array name="boolArray">
+        <item>yes</item>
+        <item>no</item>
+    </string-array>
+
+</resources>

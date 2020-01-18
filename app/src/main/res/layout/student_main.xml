@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/role_background"
+    tools:context=".student.MainStudentActivity">
+
+
+    <LinearLayout
+        android:id="@+id/adminMainLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:layout_margin="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/helloAdminTxtView"
+                android:layout_width  ="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="Hello Student!"
+                android:textColor="@color/light_button_background"
+                android:gravity="center"
+                android:textSize="48sp"/>
+
+            <TextView
+                android:layout_width  ="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="What do you want to do?"
+                android:textColor="@color/light_button_background"
+                android:gravity="center"
+                android:textSize="32sp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:orientation="vertical">
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="@drawable/button_filled_with_color_bg"
+                android:text="available exams"
+                android:onClick="studentExamsList"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="@drawable/button_filled_with_color_bg"
+                android:text="results list"
+                android:onClick="studentResultList"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="@drawable/button_filled_with_color_bg"
+                android:text="my profile "
+                android:onClick="studentProfileView"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
