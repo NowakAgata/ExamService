@@ -99,28 +99,7 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:text="Do you want to upload any material?"
-                        android:textAllCaps="true"
-                        android:textColor="@color/white"
-                        android:textSize="15sp" />
-
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="upload"
-                        android:onClick="uploadQuestionMaterial"/>
-
-
-                </LinearLayout>
             </LinearLayout>
             <RelativeLayout
                 android:layout_width="match_parent"

@@ -101,7 +101,6 @@ public class RegisterActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                        if (task.isSuccessful()) {
                            Log.d(TAG, "createUserWithEmail:success");
-                           //String id = mAuth.getCurrentUser().getUid();
                            addNewUserToDatabase();
                            updateCurrentUser();
                            finish();
@@ -132,10 +131,28 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void updateCurrentUser() {
 
+        mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Log.d(TAG, "signInWithEmail:success, user: " + email);
+
+                        } else {
+                            Log.w(TAG, "signInWithEmail:failure", task.getException());
+                            Toast.makeText(getApplicationContext(), "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
+
         preferences = getSharedPreferences(ApplicationClass.SHARED_PREFERENCES_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(ApplicationClass.SHARED_PREFERENCES_EMAIL_KEY, email);
-        editor.putString(ApplicationClass.SHARED_PREFERENCES_NAME_KEY, name);
+        editor.putString(ApplicationClass.SHARED_PREFERENCES_FIRST_NAME_KEY, name);
+        editor.putString(ApplicationClass.SHARED_PREFERENCES_LAST_NAME_KEY, surname);
+
         editor.putString(ApplicationClass.SHARED_PREFERENCES_ROLE_KEY, role);
         editor.apply();
 

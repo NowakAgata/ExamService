@@ -10,7 +10,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".professor.AllAnswersList"></activity>
+        <activity android:name=".student.ExamQuestion"></activity>
+        <activity android:name=".student.SingleExamView" />
+        <activity android:name=".student.AllExamsList" />
+        <activity android:name=".EditUser" />
+        <activity android:name=".UserView" />
+        <activity android:name=".professor.AllAnswersList" />
         <activity android:name=".professor.StudentGroupsList" />
         <activity android:name=".professor.AllStudentsList" />
         <activity android:name=".professor.EditExam" />

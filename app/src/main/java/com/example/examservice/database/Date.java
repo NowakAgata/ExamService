@@ -17,7 +17,6 @@ public class Date {
         this.timezone = calendar.getTimeZone().getID();
         this.timezone_type = 3;
         this.date = dateFormat.format(calendar.getTime());
-
     }
 
     public Date(String date, String timezone){
@@ -60,4 +59,5 @@ public class Date {
                 ", timezone_type='" + timezone_type + '\'' +
                 '}';
     }
+
 }

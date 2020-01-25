@@ -14,7 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.examservice.ApplicationClass;
+import com.example.examservice.EditUser;
 import com.example.examservice.R;
+import com.example.examservice.UserView;
 import com.example.examservice.database.Exam;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,6 +30,8 @@ public class MainProfessorActivity extends AppCompatActivity {
     private static final int ALL_EXAMS_REQUEST_CODE = 1;
     private static final int ADD_EXAM_REQUEST_CODE = 2;
     private static final int SEE_STUDENTS_REQUEST_CODE =3;
+    private static final int SEE_PROFILE_REQUEST_CODE =4;
+
     public static DatabaseReference examRef ;
     public static int examsCount ;
     public static SharedPreferences preferences ;
@@ -43,7 +47,7 @@ public class MainProfessorActivity extends AppCompatActivity {
 
         preferences = getSharedPreferences(ApplicationClass.SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
         professorId = preferences.getInt(ApplicationClass.SHARED_PREFERENCES_ID_KEY, 0);
-        professorName = preferences.getString(ApplicationClass.SHARED_PREFERENCES_NAME_KEY, "professor");
+        professorName = preferences.getString(ApplicationClass.SHARED_PREFERENCES_FIRST_NAME_KEY, "professor");
 
         txtProfessor = findViewById(R.id.helloProfessorTxtView);
         String temp = "Hello " + professorName + "!" ;
@@ -91,6 +95,12 @@ public class MainProfessorActivity extends AppCompatActivity {
         startActivityForResult(intent, SEE_STUDENTS_REQUEST_CODE);
 
     }
+    public void professorProfileView(View view) {
+//        Intent intent = new Intent(getApplicationContext(), EditUser.class);
+//        startActivityForResult(intent, SEE_PROFILE_REQUEST_CODE);
+        //TODO tutuaj przejście do edycji / widoku profilu ??? przemyśleć
+
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -112,6 +122,7 @@ public class MainProfessorActivity extends AppCompatActivity {
             }
         }
     }
+
 
 
 }

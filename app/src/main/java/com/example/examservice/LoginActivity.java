@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     EditText etEmail, etPassword ;
-    String email, name,  password, role;
+    String email, name, surname, password, role;
     int id ;
     String TAG = "TAGLoginActivity:" ;
     SharedPreferences preferences;
@@ -58,9 +58,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-
-//        Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
-//        startActivity(i);
 
         if(!loginValidation())
             return ;
@@ -124,11 +121,13 @@ public class LoginActivity extends AppCompatActivity {
             Log.d(TAG, user.toString());
 
             name = user.getFirst_name();
+            surname = user.getLast_name();
             role = user.getRole();
             id = user.getId();
 
             SharedPreferences.Editor editor = preferences.edit();
-            editor.putString(ApplicationClass.SHARED_PREFERENCES_NAME_KEY, name);
+            editor.putString(ApplicationClass.SHARED_PREFERENCES_FIRST_NAME_KEY, name);
+            editor.putString(ApplicationClass.SHARED_PREFERENCES_LAST_NAME_KEY, surname);
             editor.putString(ApplicationClass.SHARED_PREFERENCES_EMAIL_KEY, email);
             editor.putString(ApplicationClass.SHARED_PREFERENCES_ROLE_KEY, role);
             editor.putInt(ApplicationClass.SHARED_PREFERENCES_ID_KEY, id);

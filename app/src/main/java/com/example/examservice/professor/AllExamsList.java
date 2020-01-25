@@ -31,6 +31,7 @@ public class AllExamsList extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
     public static Exam currentExam ;
     DatabaseReference examRef ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +50,7 @@ public class AllExamsList extends AppCompatActivity {
 
     }
 
-    public void onProfessorExamClick(View view) {
+    public void onExamClick(View view) {
 
         int index = (int) view.getTag();
         currentExam = examsList.get(index);

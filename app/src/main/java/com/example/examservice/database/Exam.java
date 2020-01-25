@@ -1,5 +1,13 @@
 package com.example.examservice.database;
 
+import android.util.Log;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 public class Exam {
 
     private String additional_information ;
@@ -12,15 +20,20 @@ public class Exam {
     private int max_questions;
     private String name;
     private Date start_date;
+    private int percentage_passed_exam;
 
+    private ArrayList<Result> resultsList ;
+    private ArrayList<Question> questionsList ;
 
 
     public Exam(){
 
+        resultsList = new ArrayList<>();
+        questionsList = new ArrayList<>();
     }
 
     public Exam( int exam_id, String name, String additional_information, boolean learning_required, int created_by,
-                int duration_time, int max_attempts, int max_questions,
+                int duration_time, int max_attempts, int max_questions, int percentage_passed_exam,
                  Date start_date, Date end_date) {
         this.additional_information = additional_information;
         this.learning_required = learning_required;
@@ -32,6 +45,10 @@ public class Exam {
         this.name = name;
         this.start_date = start_date;
         this.end_date = end_date;
+        this.percentage_passed_exam = percentage_passed_exam ;
+        resultsList = new ArrayList<>();
+        questionsList = new ArrayList<>();
+
     }
 
     public String getAdditional_information() {
@@ -114,6 +131,31 @@ public class Exam {
         this.start_date = start_date;
     }
 
+    public int getPercentage_passed_exam() {
+        return percentage_passed_exam;
+    }
+
+    public void setPercentage_passed_exam(int percentage_passed_exam) {
+        this.percentage_passed_exam = percentage_passed_exam;
+    }
+
+
+    public ArrayList<Result> getResultsList() {
+        return resultsList;
+    }
+
+    public void setResultsList(ArrayList<Result> resultsList) {
+        this.resultsList = resultsList;
+    }
+
+    public ArrayList<Question> getQuestionsList() {
+        return questionsList;
+    }
+
+    public void setQuestionsList(ArrayList<Question> questionsList) {
+        this.questionsList = questionsList;
+    }
+
     @Override
     public String toString() {
         return "Exam{" +
@@ -127,6 +169,33 @@ public class Exam {
                 ", max_questions=" + max_questions +
                 ", name='" + name + '\'' +
                 ", start_date=" + start_date +
+                ", percentage_passed_exam=" + percentage_passed_exam +
                 '}';
+    }
+
+    public boolean isAvailable(){
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar calendar = new GregorianCalendar();
+        String nowStr = dateFormat.format(calendar.getTime());
+
+        String startStr = start_date.getDate().substring(0,10);
+        String endStr = end_date.getDate().substring(0,10);
+
+        try {
+            java.util.Date now = dateFormat.parse(nowStr);
+            java.util.Date start = dateFormat.parse(startStr);
+            java.util.Date end = dateFormat.parse(endStr);
+
+            if(start.after(now) || end.before(now)){
+                return false;
+            }
+
+        } catch(ParseException e){
+            Log.d("ExamParseDate: ", e.getMessage());
+            return false;
+        }
+
+        return true ;
     }
 }

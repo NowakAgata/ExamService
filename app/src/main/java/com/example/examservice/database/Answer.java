@@ -5,7 +5,6 @@ public class Answer {
     public String content ;
     public int exam_id ;
     public int id;
-    public boolean is_active ;
     public boolean is_true ;
     public int question_id ;
 
@@ -13,11 +12,10 @@ public class Answer {
 
     }
 
-    public Answer(String content, int exam_id, int id, boolean is_active, boolean is_true, int question_id) {
+    public Answer(String content, int exam_id, int id, boolean is_true, int question_id) {
         this.content = content;
         this.exam_id = exam_id;
         this.id = id;
-        this.is_active = is_active;
         this.is_true = is_true;
         this.question_id = question_id;
     }
@@ -36,14 +34,6 @@ public class Answer {
 
     public void setExam_id(int exam_id) {
         this.exam_id = exam_id;
-    }
-
-    public boolean getIs_active() {
-        return is_active;
-    }
-
-    public void setIs_active(boolean is_active) {
-        this.is_active = is_active;
     }
 
     public boolean getIs_true() {
@@ -76,7 +66,6 @@ public class Answer {
                 "content='" + content + '\'' +
                 ", exam_id=" + exam_id +
                 ", id=" + id +
-                ", is_active=" + is_active +
                 ", is_true=" + is_true +
                 ", question_id=" + question_id +
                 '}';

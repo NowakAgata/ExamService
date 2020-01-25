@@ -75,6 +75,15 @@
                 android:text="see students by group"
                 android:onClick="professorSeeStudents"/>
 
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="@drawable/button_filled_with_color_bg"
+                android:text="my profile"
+                android:onClick="professorProfileView"/>
+
 
 
         </LinearLayout>

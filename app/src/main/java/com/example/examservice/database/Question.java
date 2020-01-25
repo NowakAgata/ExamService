@@ -1,24 +1,38 @@
 package com.example.examservice.database;
 
 
+import java.util.ArrayList;
+
 public class Question {
 
     public String content ;
     public int exam_id ;
     public int id ;
     public int max_answers;
-    public String name_of_file ;
+    private ArrayList<Answer> listOfAnswers ;
 
     public Question(){
-
+        listOfAnswers = new ArrayList<>() ;
     }
 
-    public Question(String content, int exam_id, int id, int max_answers, String name_of_file) {
+    public Question(String content, int exam_id, int id, int max_answers) {
         this.content = content;
         this.exam_id = exam_id;
         this.id = id;
         this.max_answers = max_answers;
-        this.name_of_file = name_of_file;
+        listOfAnswers = new ArrayList<>() ;
+    }
+
+    public void addAnswer(Answer answer){
+        listOfAnswers.add(answer) ;
+    }
+
+    public ArrayList<Answer> getAnswersList(){
+        return listOfAnswers ;
+    }
+
+    public void setListOfAnswers(ArrayList<Answer> list){
+        this.listOfAnswers = list ;
     }
 
     public String getContent() {
@@ -53,14 +67,10 @@ public class Question {
         this.max_answers = max_answers;
     }
 
-    public String getName_of_file() {
-        return name_of_file;
-    }
 
-    public void setName_of_file(String name_of_file) {
-        this.name_of_file = name_of_file;
+    public int getAnswersCount(){
+        return listOfAnswers.size();
     }
-
     @Override
     public String toString() {
         return "Question{" +
@@ -68,7 +78,6 @@ public class Question {
                 ", exam_id=" + exam_id +
                 ", id=" + id +
                 ", max_answers=" + max_answers +
-                ", name_of_file='" + name_of_file + '\'' +
                 '}';
     }
 }

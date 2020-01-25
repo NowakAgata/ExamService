@@ -56,7 +56,7 @@ public class NewAnswer extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), R.string.allFields, Toast.LENGTH_SHORT).show();
         } else{
             int id = AddQuestion.answerList.size();
-            Answer answer = new Answer(content, AddQuestion.examId, id, false, isCorrect, 0 );
+            Answer answer = new Answer(content, AddQuestion.examId, id, isCorrect, 0 );
             AddQuestion.answerList.add(answer);
             setResult(RESULT_OK);
             finish();

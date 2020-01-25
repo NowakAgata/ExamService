@@ -41,10 +41,9 @@ public class AllAnswersList extends AppCompatActivity {
         setContentView(R.layout.professor_all_answers_list);
 
         Intent intent = getIntent();
-        int exam = intent.getIntExtra("EXAM_ID", 0);
-        int question = intent.getIntExtra("QUESTION_ID", 0);
-        examId = Integer.toString(exam);
-        questionId = Integer.toString(question);
+        examId = intent.getStringExtra("EXAM_ID");
+        questionId = intent.getStringExtra("QUESTION_ID");
+
 
 
         answerList = AllQuestionsList.answerArrayList;
@@ -107,8 +106,7 @@ public class AllAnswersList extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Log.d(TAG, "Deleting complete");
-                        answerList = AllQuestionsList.answerArrayList ;
-                        answersAdapter.notifyDataSetChanged();
+                        updateAnswersList();
 
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -119,5 +117,10 @@ public class AllAnswersList extends AppCompatActivity {
                     }
         });
 
+    }
+
+    private void updateAnswersList(){
+        answerList = AllQuestionsList.answerArrayList ;
+        answersAdapter.notifyDataSetChanged();
     }
 }

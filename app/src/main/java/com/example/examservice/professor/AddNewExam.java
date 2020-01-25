@@ -29,11 +29,11 @@ import java.util.GregorianCalendar;
 public class AddNewExam extends AppCompatActivity {
 
     public static final String TAG = "TAGAddNewExam" ;
-    EditText etName, etInfo, etFrom, etTo, etDuration, etAttempts, etQuestions ;
+    EditText etName, etInfo, etFrom, etTo, etDuration, etAttempts, etQuestions, etPercentage ;
     Spinner isLearningSpinner ;
-    String name, info, from, to, duration, attempts, questions;
+    String name, info, from, to, duration, attempts, questions, percent;
     Date fromDate, toDate;
-    int durationInt, attemptsInt, questionsInt ;
+    int durationInt, attemptsInt, questionsInt, percentageInt ;
     boolean isLearning ;
     public static DateFormat format ;
     @Override
@@ -48,6 +48,7 @@ public class AddNewExam extends AppCompatActivity {
         etDuration = findViewById(R.id.etExamDuration);
         etAttempts = findViewById(R.id.etExamMaxAtt);
         etQuestions = findViewById(R.id.etExamMaxQuest);
+        etPercentage = findViewById(R.id.etExamPercentage);
         isLearningSpinner = findViewById(R.id.spinExamLearning);
 
         ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(
@@ -84,10 +85,12 @@ public class AddNewExam extends AppCompatActivity {
         attemptsInt = Integer.parseInt(attempts);
         durationInt = Integer.parseInt(duration);
         questionsInt = Integer.parseInt(questions);
+        percentageInt = Integer.parseInt(percent);
         String timezone = new GregorianCalendar().getTimeZone().getID();
         Date start = new Date(from, timezone);
         Date end = new Date(to, timezone);
-        Exam exam = new Exam(id, name, info, isLearning, createdBy, durationInt, attemptsInt, questionsInt, start, end) ;
+        Exam exam = new Exam(id, name, info, isLearning, createdBy, durationInt, attemptsInt,
+                questionsInt,percentageInt, start, end) ;
 
         Log.d(TAG, "Adding new exam: " + name + " to database");
 
@@ -107,9 +110,10 @@ public class AddNewExam extends AppCompatActivity {
         duration = etDuration.getText().toString();
         attempts = etAttempts.getText().toString();
         questions = etQuestions.getText().toString();
+        percent = etPercentage.getText().toString();
 
         if( name.isEmpty() || info.isEmpty() || from.isEmpty() || to.isEmpty() ||duration.isEmpty()
-            || attempts.isEmpty() || questions.isEmpty()){
+            || attempts.isEmpty() || questions.isEmpty() || percent.isEmpty()){
             Toast.makeText(getApplicationContext(), R.string.allFields, Toast.LENGTH_SHORT).show();
             return false;
         } else if(!dateValidation(from)){
@@ -121,7 +125,10 @@ public class AddNewExam extends AppCompatActivity {
         } else if(!numberValidation(duration)){
             Toast.makeText(getApplicationContext(), "Duration time is not a valid, positive number", Toast.LENGTH_SHORT).show();
             return false;
-        } else if(!numberValidation(attempts)){
+        } else if(!numberValidation(percent)){
+            Toast.makeText(getApplicationContext(), "Percent to pass is not a valid, positive number", Toast.LENGTH_SHORT).show();
+            return false;
+        }else if(!numberValidation(attempts)){
             Toast.makeText(getApplicationContext(), "Max. number of attempts is not a valid, positive number", Toast.LENGTH_SHORT).show();
             return false;
         } else if(!numberValidation(questions)){

@@ -12,6 +12,7 @@ import android.view.View;
 import com.example.examservice.ApplicationClass;
 import com.example.examservice.R;
 import com.example.examservice.database.User;
+import com.example.examservice.database.UserExam;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class StudentGroupsList extends AppCompatActivity {
     StudentGroupsAdapter groupsAdapter ;
     RecyclerView.LayoutManager layoutManager;
     ArrayList<String> groupsList ;
+    boolean flagFrom ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,15 +47,18 @@ public class StudentGroupsList extends AppCompatActivity {
         groupsAdapter = new StudentGroupsAdapter(this, groupsList);
         recyclerView.setAdapter(groupsAdapter);
 
+        flagFrom = getIntent().getBooleanExtra("FROM_ADD_STUDENT", false);
     }
 
     public void onGroupClick(View view) {
         int i = (int) view.getTag() ;
         String chosen = groupsList.get(i);
-        Log.d("GROUPTAG", "Wybrano: " + chosen) ;
+        Log.d("GROUP_TAG", "Wybrano: " + chosen) ;
         Intent intent = new Intent(getApplicationContext(), AllStudentsList.class);
         intent.putExtra("GROUP", chosen);
+        intent.putExtra("FROM_ADD_STUDENT", flagFrom);
         startActivity(intent);
+
     }
 
     @Override

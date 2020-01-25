@@ -84,7 +84,7 @@ public class AddQuestion extends AppCompatActivity {
         } else{
             questionId = ExamOptions.questionsCount;
             questionId++;
-            Question question = new Question(content, examId, questionId, maxAnswers,fileName );
+            Question question = new Question(content, examId, questionId, maxAnswers);
             String examIdStr = Integer.toString(examId) ;
             String questionIdStr = Integer.toString(questionId);
             MainProfessorActivity.examRef.child(examIdStr).child("Question").child(questionIdStr).setValue(question);
@@ -113,8 +113,4 @@ public class AddQuestion extends AppCompatActivity {
         }
     }
 
-    public void uploadQuestionMaterial(View view) {
-        fileName = "" ;
-        //TODO tu skończyłam, dodać wczytywanie plików
-    }
 }

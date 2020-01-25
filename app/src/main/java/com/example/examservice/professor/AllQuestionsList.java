@@ -69,6 +69,8 @@ public class AllQuestionsList extends AppCompatActivity {
 
         updateAnswersList();
         Intent intent = new Intent(getApplicationContext(), AllAnswersList.class);
+        intent.putExtra("EXAM_ID", exam);
+        intent.putExtra("QUESTION_ID", question);
         startActivityForResult(intent, ALL_ANSWERS_REQUEST_CODE);
 
     }

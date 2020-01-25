@@ -1,4 +1,5 @@
-package com.example.examservice.professor;
+package com.example.examservice.student;
+
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;

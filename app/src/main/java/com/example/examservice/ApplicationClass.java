@@ -27,7 +27,8 @@ public class ApplicationClass extends Application {
     static public DatabaseReference usersRef ;
     //static public DatabaseReference examsRef ;
     public static final String SHARED_PREFERENCES_NAME ="examServicePreferences";
-    public static final String SHARED_PREFERENCES_NAME_KEY = ";username;";
+    public static final String SHARED_PREFERENCES_FIRST_NAME_KEY = ";name;";
+    public static final String SHARED_PREFERENCES_LAST_NAME_KEY = ";surname;";
     public static final String SHARED_PREFERENCES_EMAIL_KEY = ";email;";
     public static final String SHARED_PREFERENCES_ROLE_KEY = ";role;";
     public static final String SHARED_PREFERENCES_ID_KEY = ";id;";
@@ -97,17 +98,6 @@ public class ApplicationClass extends Application {
             }
         });
 
-//        examsRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
     }
 
 }
