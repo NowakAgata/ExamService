@@ -1,5 +1,6 @@
 package com.example.examservice;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -18,7 +19,7 @@ public class UserView extends AppCompatActivity {
     String firstName, lastName,name,   email, password ;
     SharedPreferences prefs;
     FirebaseAuth mAuth ;
-    //TODO zrobić wyświetlanie użytkownika i przejście do edyscji
+    //TODO zrobić wyświetlanie użytkownika i przejście do edycji
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +30,21 @@ public class UserView extends AppCompatActivity {
 
         tvName = findViewById(R.id.userNameTxtView);
         tvEmail = findViewById(R.id.userEmailTxtView);
-        //tvPassword = findViewById(R.id.userPasswordTxtView);
 
         prefs = getSharedPreferences(ApplicationClass.SHARED_PREFERENCES_NAME, MODE_PRIVATE);
+
+        updateTextViews();
+
+    }
+
+    private void updateTextViews() {
 
         firstName = prefs.getString(ApplicationClass.SHARED_PREFERENCES_FIRST_NAME_KEY, "");
         lastName = prefs.getString(ApplicationClass.SHARED_PREFERENCES_LAST_NAME_KEY, "");
         email = prefs.getString(ApplicationClass.SHARED_PREFERENCES_EMAIL_KEY, "");
-
-        //mAuth.getCurrentUser().get
+        name = firstName + " " + lastName ;
+        tvName.setText(name);
+        tvEmail.setText(email);
 
     }
 
@@ -48,11 +55,28 @@ public class UserView extends AppCompatActivity {
 
     }
 
-    public void onOkClick(View view){
-        setResult(RESULT_OK);
+
+    public void signOutButton(View view) {
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(ApplicationClass.SHARED_PREFERENCES_FIRST_NAME_KEY, "");
+        editor.putString(ApplicationClass.SHARED_PREFERENCES_LAST_NAME_KEY, "");
+        editor.putString(ApplicationClass.SHARED_PREFERENCES_EMAIL_KEY, "");
+        editor.putString(ApplicationClass.SHARED_PREFERENCES_ROLE_KEY, "");
+        editor.putInt(ApplicationClass.SHARED_PREFERENCES_ID_KEY, -1);
+        editor.apply();
+
+        mAuth.signOut();
+        setResult(1000);
         finish();
     }
 
-    public void SingOutButton(View view) {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == EDIT_USER_REQUEST_CODE){
+            if(resultCode == RESULT_OK){
+                updateTextViews();
+            }
+        }
     }
 }

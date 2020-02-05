@@ -2,6 +2,8 @@ package com.example.examservice.database;
 
 import android.util.Log;
 
+import com.google.firebase.database.DatabaseReference;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,6 +23,8 @@ public class Exam {
     private String name;
     private Date start_date;
     private int percentage_passed_exam;
+    private int userExamId ;
+    private Date exam_resolved ;
 
     private ArrayList<Result> resultsList ;
     private ArrayList<Question> questionsList ;
@@ -33,7 +37,7 @@ public class Exam {
     }
 
     public Exam( int exam_id, String name, String additional_information, boolean learning_required, int created_by,
-                int duration_time, int max_attempts, int max_questions, int percentage_passed_exam,
+                 int duration_time, int max_attempts, int max_questions, int percentage_passed_exam,
                  Date start_date, Date end_date) {
         this.additional_information = additional_information;
         this.learning_required = learning_required;
@@ -156,6 +160,22 @@ public class Exam {
         this.questionsList = questionsList;
     }
 
+    public int getUserExamId() {
+        return userExamId;
+    }
+
+    public void setUserExamId(int userExamId) {
+        this.userExamId = userExamId;
+    }
+
+    public Date getExam_resolved() {
+        return exam_resolved;
+    }
+
+    public void setExam_resolved(Date exam_resolved) {
+        this.exam_resolved = exam_resolved;
+    }
+
     @Override
     public String toString() {
         return "Exam{" +
@@ -170,6 +190,9 @@ public class Exam {
                 ", name='" + name + '\'' +
                 ", start_date=" + start_date +
                 ", percentage_passed_exam=" + percentage_passed_exam +
+                ", userExamId=" + userExamId +
+                ", resultsList=" + resultsList.toString() +
+                ", questionsList=" + questionsList.toString() +
                 '}';
     }
 
@@ -181,13 +204,21 @@ public class Exam {
 
         String startStr = start_date.getDate().substring(0,10);
         String endStr = end_date.getDate().substring(0,10);
+        String limitStr = "2005-01-01";
+        String resolvedStr = exam_resolved.getDate().substring(0,10);
 
         try {
             java.util.Date now = dateFormat.parse(nowStr);
             java.util.Date start = dateFormat.parse(startStr);
             java.util.Date end = dateFormat.parse(endStr);
+            java.util.Date limit = dateFormat.parse(limitStr);
+            java.util.Date resolved = dateFormat.parse(resolvedStr);
 
             if(start.after(now) || end.before(now)){
+                Log.d("Exam", "Zła data");
+                return false;
+            }else if( resolved.after(limit)){
+                Log.d("Exam", "Rozwiązany");
                 return false;
             }
 
@@ -196,6 +227,24 @@ public class Exam {
             return false;
         }
 
+        if(resultsList.size() >= max_attempts){
+            Log.d("Exam", "Zła liczba podejść");
+            return false;
+        }
         return true ;
+    }
+
+    public boolean isPassed(int questions, int points){
+
+        double score = ((double)points/(double)questions)*100;
+        return (score >= percentage_passed_exam) ;
+    }
+
+    public void addResult(Result result){
+        resultsList.add(result);
+    }
+
+    public int getResultListSize(){
+        return resultsList.size();
     }
 }

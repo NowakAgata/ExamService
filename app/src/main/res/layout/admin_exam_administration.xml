@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/role_background"
+    tools:context=".admin.ExamAdministration">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="16dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="32dp"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:background="@drawable/button_filled_with_color_bg"
+            android:text="edit exam details"
+            android:onClick="editExam"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/button_filled_with_color_bg"
+            android:text="add new exam"
+            android:onClick="addExam"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:background="@drawable/button_filled_with_color_bg"
+            android:text="manage exam's questions and answers"
+            android:onClick="editQuestions"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:background="@drawable/button_filled_with_color_bg"
+            android:text="manage students connected with exam"
+            android:onClick="editUserExam"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:background="@drawable/button_filled_with_color_bg"
+            android:text="manage file groups connected with exam"
+            android:onClick="editMaterialExam"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

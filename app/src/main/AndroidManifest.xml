@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.examservice">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".ApplicationClass"
         android:allowBackup="true"
@@ -10,7 +15,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".student.ExamQuestion"></activity>
+        <activity android:name=".student.AllMaterialsList"></activity>
+        <activity android:name=".student.AllMaterialsGroups" />
+        <activity android:name=".professor.AddNewMaterial" />
+        <activity android:name=".professor.NewLearningMaterialsGroup" />
+        <activity android:name=".professor.EditMaterial" />
+        <activity android:name=".professor.AllMaterialsList" />
+        <activity android:name=".professor.AllMaterialsGroup" />
+        <activity android:name=".admin.EditMaterial" />
+        <activity android:name=".admin.AddNewMaterial" />
+        <activity android:name=".admin.AllMaterialsList" />
+        <activity android:name=".admin.NewLearningMaterialsGroup" />
+        <activity android:name=".admin.AllMaterialsGroups" />
+        <activity android:name=".admin.FileAdministration" />
+        <activity android:name=".student.AllResultsList" />
+        <activity android:name=".admin.NewAnswer" />
+        <activity android:name=".admin.AddNewQuestion" />
+        <activity android:name=".admin.AllAnswersList" />
+        <activity android:name=".admin.AllQuestionsList" />
+        <activity android:name=".admin.AllUserExamList" />
+        <activity android:name=".admin.AddNewExam" />
+        <activity android:name=".admin.EditExam" />
+        <activity android:name=".admin.AllExamsList" />
+        <activity android:name=".admin.ExamView" />
+        <activity android:name=".admin.ExamAdministration" />
+        <activity android:name=".admin.EditUser" />
+        <activity android:name=".admin.UserView" />
+        <activity android:name=".admin.UserAdministration" />
+        <activity android:name=".student.ExamQuestion" />
         <activity android:name=".student.SingleExamView" />
         <activity android:name=".student.AllExamsList" />
         <activity android:name=".EditUser" />

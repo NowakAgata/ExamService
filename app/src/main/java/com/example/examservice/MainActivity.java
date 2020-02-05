@@ -1,6 +1,7 @@
 package com.example.examservice;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -38,12 +39,14 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int NEW_ACTIVITY_REQUEST_CODE =1;
     public static final String TAG = "TAGMainActivity";
     public static boolean isLogged ;
     private FirebaseAuth mAuth ;
     public String role, name, email;
     SharedPreferences preferences;
     ArrayList<User> userArrayList ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,12 @@ public class MainActivity extends AppCompatActivity {
         preferences = getSharedPreferences(ApplicationClass.SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
         mAuth = FirebaseAuth.getInstance();
 
+        checkIfLogged();
+
+
+    }
+
+    private void checkIfLogged() {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         Log.d(TAG, "current user is: " + currentUser);
         if(currentUser != null) {
@@ -66,24 +75,32 @@ public class MainActivity extends AppCompatActivity {
         if(!isLogged){
             Log.d(TAG , "User is not logged, starting login activity" );
             Intent intent = new Intent(this, LoginActivity.class);
+
             startActivity(intent);
 
         } else{
             role = preferences.getString(ApplicationClass.SHARED_PREFERENCES_ROLE_KEY, ApplicationClass.STUDENT_ROLE);
             if(role.equalsIgnoreCase(ApplicationClass.PROFESSOR_ROLE)){
                 Intent intent = new Intent(this, MainProfessorActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, NEW_ACTIVITY_REQUEST_CODE);
             }else if(role.equalsIgnoreCase(ApplicationClass.STUDENT_ROLE)){
                 Intent intent = new Intent(this, MainStudentActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, NEW_ACTIVITY_REQUEST_CODE);
             } else if(role.equalsIgnoreCase(ApplicationClass.ADMIN_ROLE)){
                 Intent intent = new Intent(this, MainAdminActivity.class);
-                startActivity(intent);
-           }
+                startActivityForResult(intent, NEW_ACTIVITY_REQUEST_CODE);
+            }
 
         }
-
     }
 
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == NEW_ACTIVITY_REQUEST_CODE){
+            if(resultCode == 1000){
+                checkIfLogged();
+            }
+        }
+    }
 }

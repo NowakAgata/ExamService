@@ -16,10 +16,7 @@ import com.example.examservice.database.Answer;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -27,7 +24,7 @@ public class AllAnswersList extends AppCompatActivity {
 
     private static final String TAG = "TAGAllAnswers";
     RecyclerView recyclerView;
-    AnswersAdapter answersAdapter ;
+    AllAnswersAdapter allAnswersAdapter;
     RecyclerView.LayoutManager layoutManager;
     ArrayList<Answer> answerList ;
     DatabaseReference questionRef ;
@@ -54,8 +51,8 @@ public class AllAnswersList extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        answersAdapter = new AnswersAdapter(this, answerList);
-        recyclerView.setAdapter(answersAdapter);
+        allAnswersAdapter = new AllAnswersAdapter(this, answerList);
+        recyclerView.setAdapter(allAnswersAdapter);
     }
 
     @Override
@@ -121,6 +118,6 @@ public class AllAnswersList extends AppCompatActivity {
 
     private void updateAnswersList(){
         answerList = AllQuestionsList.answerArrayList ;
-        answersAdapter.notifyDataSetChanged();
+        allAnswersAdapter.notifyDataSetChanged();
     }
 }

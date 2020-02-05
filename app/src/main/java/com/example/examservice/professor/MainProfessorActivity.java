@@ -3,10 +3,14 @@ package com.example.examservice.professor;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +22,7 @@ import com.example.examservice.EditUser;
 import com.example.examservice.R;
 import com.example.examservice.UserView;
 import com.example.examservice.database.Exam;
+import com.example.examservice.database.LearningMaterialsGroup;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,11 +36,15 @@ public class MainProfessorActivity extends AppCompatActivity {
     private static final int ADD_EXAM_REQUEST_CODE = 2;
     private static final int SEE_STUDENTS_REQUEST_CODE =3;
     private static final int SEE_PROFILE_REQUEST_CODE =4;
-
+    private static final int SEE_MATERIALS_REQUEST_CODE =5;
+    private static final int PERMISSIONS_REQUEST_READ_FILES = 6;
     public static DatabaseReference examRef ;
+    public static DatabaseReference groupsRef ;
     public static int examsCount ;
+    public static int groupsCount ;
     public static SharedPreferences preferences ;
     public static ArrayList<Exam> examsList ;
+    public static ArrayList<LearningMaterialsGroup> groupsList ;
     public static int professorId ;
     public String professorName ;
     private static final String TAG = "TAGMainProfessor";
@@ -53,7 +62,11 @@ public class MainProfessorActivity extends AppCompatActivity {
         String temp = "Hello " + professorName + "!" ;
         txtProfessor.setText(temp);
 
+        examsCount = 0;
+        groupsCount = 0;
         examsList = new ArrayList<>() ;
+        groupsList = new ArrayList<>();
+
         examRef = ApplicationClass.mDatabase.getReference().child("Exam") ;
         examRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -65,7 +78,7 @@ public class MainProfessorActivity extends AppCompatActivity {
                         int temp = exam.getExam_id();
                         examsCount = (temp > examsCount) ? temp : examsCount ;
                         Log.d(TAG, exam.toString());
-                        if(exam.getCreated_by() == professorId){
+                        if(exam.getCreated_by() == professorId || exam.getCreated_by() == -1){
                             examsList.add(exam);
                         }
                     }
@@ -78,7 +91,82 @@ public class MainProfessorActivity extends AppCompatActivity {
             }
         });
 
+        groupsRef = ApplicationClass.mDatabase.getReference().child("LearningMaterialsGroup");
+        groupsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                groupsList.clear();
+                for(DataSnapshot groupsSnapshot : dataSnapshot.getChildren()){
+                    LearningMaterialsGroup group = groupsSnapshot.getValue(LearningMaterialsGroup.class);
+                    if(group != null){
+                        int temp = group.getLearning_materials_group_id();
+                        groupsCount = (groupsCount > temp ) ? groupsCount : temp ;
+                        groupsList.add(group);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        checkPermission();
     }
+    private void checkPermission() {
+
+        // Here, thisActivity is the current activity
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Permission is not granted
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+            } else {
+                // No explanation needed; request the permission
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        PERMISSIONS_REQUEST_READ_FILES);
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        } else {
+            Log.d(TAG,"Permission has already been granted");
+            // Permission has already been granted
+        }
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case PERMISSIONS_REQUEST_READ_FILES: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+                } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request.
+        }
+    }
+
 
     public void professorAllExamsList(View view) {
         Intent intent = new Intent(getApplicationContext(), AllExamsList.class);
@@ -96,9 +184,17 @@ public class MainProfessorActivity extends AppCompatActivity {
 
     }
     public void professorProfileView(View view) {
-//        Intent intent = new Intent(getApplicationContext(), EditUser.class);
-//        startActivityForResult(intent, SEE_PROFILE_REQUEST_CODE);
-        //TODO tutuaj przejście do edycji / widoku profilu ??? przemyśleć
+        Intent intent = new Intent(getApplicationContext(), UserView.class);
+        startActivityForResult(intent, SEE_PROFILE_REQUEST_CODE);
+    }
+    public void professorSeeMaterials(View view) {
+        Intent intent = new Intent(getApplicationContext(), AllMaterialsGroup.class);
+        startActivityForResult(intent, SEE_MATERIALS_REQUEST_CODE);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
 
     }
 
@@ -120,9 +216,12 @@ public class MainProfessorActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), R.string.somethingWrong, Toast.LENGTH_SHORT).show();
 
             }
+        }else if(requestCode == SEE_PROFILE_REQUEST_CODE){
+            if(resultCode == 1000){
+                setResult(1000);
+                finish();
+            }
         }
     }
-
-
 
 }

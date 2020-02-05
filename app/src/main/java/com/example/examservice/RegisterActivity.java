@@ -122,6 +122,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         int counter = ApplicationClass.usersCount + 1 ;
         Date date = new Date();
+        if(!role.equals(ApplicationClass.STUDENT_ROLE)) group = "-1" ;
         User user1 = new User(counter, name, surname, role, email, date, date, date, group);
         Log.d(TAG, "Adding user to database:");
         Log.d(TAG, user1.toString());

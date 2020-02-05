@@ -14,6 +14,8 @@ import android.widget.Toast;
 import com.example.examservice.ApplicationClass;
 import com.example.examservice.R;
 import com.example.examservice.database.Exam;
+import com.example.examservice.database.LearningMaterialsGroup;
+import com.example.examservice.database.LearningMaterialsGroupExam;
 import com.example.examservice.database.Question;
 import com.example.examservice.database.UserExam;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,6 +31,7 @@ import java.util.HashSet;
 
 public class ExamOptions extends AppCompatActivity {
 
+    private static final int ADD_GROUP_TO_EXAM_REQUEST_CODE = 5;
     public Exam exam ;
     TextView tvName, tvInfo ;
 
@@ -41,9 +44,12 @@ public class ExamOptions extends AppCompatActivity {
     public static ArrayList<Question> questionsList ;
     private DatabaseReference questionsRef ;
     public static int questionsCount ;
+    public static int qroupExamCount ;
     private DatabaseReference examRef ;
     private DatabaseReference userExamRef ;
+    private DatabaseReference groupExamRef ;
     ArrayList<UserExam> userExamList ;
+    public static ArrayList<LearningMaterialsGroupExam> groupExamList ;
     public static HashSet<Integer> userIdsArray ;
     public static int userExamLastId ;
 
@@ -58,8 +64,10 @@ public class ExamOptions extends AppCompatActivity {
 
         userExamList = new ArrayList<>();
         questionsList = new ArrayList<>();
+        groupExamList = new ArrayList<>();
         userIdsArray = new HashSet<>();
         exam = AllExamsList.currentExam ;
+        qroupExamCount =0 ;
 
         tvName.setText(exam.getName());
         tvInfo.setText(exam.getAdditional_information());
@@ -114,6 +122,27 @@ public class ExamOptions extends AppCompatActivity {
             }
         });
 
+        groupExamRef= ApplicationClass.mDatabase.getReference().child("LearningMaterialsGroupExam");
+        groupExamRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                groupExamList.clear();
+                for(DataSnapshot groupExamSnapshot : dataSnapshot.getChildren()){
+                    LearningMaterialsGroupExam groupExam = groupExamSnapshot.getValue(LearningMaterialsGroupExam.class);
+                    if(groupExam != null){
+                        int temp = groupExam.getId();
+                        qroupExamCount = (qroupExamCount > temp) ? qroupExamCount : temp ;
+                        groupExamList.add(groupExam);
+                        Log.d(TAG, groupExam.toString());
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public void singleExamView(View view) {
@@ -168,6 +197,13 @@ public class ExamOptions extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void seeMaterials(View view) {
+        Intent intent = new Intent(getApplicationContext(), AllMaterialsGroup.class);
+        intent.putExtra("SHOW_FILES", true);
+        startActivityForResult(intent, ADD_GROUP_TO_EXAM_REQUEST_CODE);
+
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -183,12 +219,9 @@ public class ExamOptions extends AppCompatActivity {
             if(resultCode == 100){
                 Toast.makeText(getApplicationContext(), "Question deleted successfully.", Toast.LENGTH_SHORT).show();
             }else if(resultCode == 200){
-                Toast.makeText(getApplicationContext(), "QSomething went wrong with deleting", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Something went wrong with deleting", Toast.LENGTH_SHORT).show();
 
             }
         }
     }
-
-
-
 }

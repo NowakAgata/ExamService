@@ -7,9 +7,10 @@ public class Answer {
     public int id;
     public boolean is_true ;
     public int question_id ;
+    private boolean is_active ;
 
     public Answer(){
-
+        is_active = false;
     }
 
     public Answer(String content, int exam_id, int id, boolean is_true, int question_id) {
@@ -18,6 +19,7 @@ public class Answer {
         this.id = id;
         this.is_true = is_true;
         this.question_id = question_id;
+        this.is_active = false ;
     }
 
     public String getContent() {
@@ -58,6 +60,14 @@ public class Answer {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public boolean isIs_active() {
+        return is_active;
+    }
+
+    public void setIs_active(boolean is_active) {
+        this.is_active = is_active;
     }
 
     @Override

@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.examservice.R;
@@ -19,7 +18,6 @@ import com.example.examservice.database.Question;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class AddQuestion extends AppCompatActivity {
@@ -27,7 +25,7 @@ public class AddQuestion extends AppCompatActivity {
     EditText etContent, etMaxAnswers ;
     String content ;
     RecyclerView recyclerView;
-    AnswersAdapter answersAdapter ;
+    AllAnswersAdapter allAnswersAdapter;
     RecyclerView.LayoutManager layoutManager;
     public static ArrayList<Answer> answerList ;
     Exam exam ;
@@ -54,8 +52,8 @@ public class AddQuestion extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        answersAdapter = new AnswersAdapter(this, answerList);
-        recyclerView.setAdapter(answersAdapter);
+        allAnswersAdapter = new AllAnswersAdapter(this, answerList);
+        recyclerView.setAdapter(allAnswersAdapter);
 
         exam = AllExamsList.currentExam;
         examId = exam.getExam_id();
@@ -108,7 +106,7 @@ public class AddQuestion extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == NEW_ANSWER_REQUEST_CODE){
             if(resultCode == RESULT_OK){
-                answersAdapter.notifyDataSetChanged();
+                allAnswersAdapter.notifyDataSetChanged();
             }
         }
     }

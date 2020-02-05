@@ -1,6 +1,7 @@
 package com.example.examservice.student;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,6 +16,8 @@ import com.example.examservice.R;
 import com.example.examservice.database.Answer;
 import com.example.examservice.database.Date;
 import com.example.examservice.database.Exam;
+import com.example.examservice.database.LearningMaterialsGroup;
+import com.example.examservice.database.LearningMaterialsGroupExam;
 import com.example.examservice.database.Question;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -34,9 +37,11 @@ public class SingleExamView extends AppCompatActivity {
     int duration, attempts, questions;
     public static Exam exam ;
     public static ArrayList<Question> questionsList ;
-    public static ArrayList<Answer> answersList ;
+    public static ArrayList<LearningMaterialsGroupExam> groupExamList ;
+    public static ArrayList<LearningMaterialsGroup> groupList ;
     DatabaseReference questionsRef ;
     DatabaseReference answersRef ;
+    DatabaseReference groupsExamRef ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +58,14 @@ public class SingleExamView extends AppCompatActivity {
 
         exam = AllExamsList.currentExam ;
         questionsList = new ArrayList<>();
-        answersList = new ArrayList<>();
-
-        questionsRef = ApplicationClass.mDatabase.getReference() ;
-        answersRef = ApplicationClass.mDatabase.getReference();
+        groupExamList = new ArrayList<>();
+        groupList = new ArrayList<>();
 
         examId = Integer.toString(exam.getExam_id());
+
+        questionsRef = ApplicationClass.mDatabase.getReference() ;
+        answersRef = ApplicationClass.mDatabase.getReference().child("Exam").child(examId).child("Question");
+
         questionsRef.child("Exam").child(examId).child("Question").addListenerForSingleValueEvent(
                 new ValueEventListener() {
             @Override
@@ -68,9 +75,9 @@ public class SingleExamView extends AppCompatActivity {
                 for(DataSnapshot questionSnapshot : dataSnapshot.getChildren()){
                     Question question = questionSnapshot.getValue(Question.class);
                     if(question != null){
-                        addAnswersToQuestion(question);
+                        //addAnswersToQuestion(question);
                         Log.i(TAG, question.toString());
-                        question.setListOfAnswers(answersList);
+                        //question.setListOfAnswers(answersList);
                         questionsList.add(question);
 
                     }
@@ -85,31 +92,43 @@ public class SingleExamView extends AppCompatActivity {
             }
         });
 
-    }
-
-    private void addAnswersToQuestion(Question question) {
-
-        answersList.clear();
-        String id = Integer.toString(question.getId());
-        answersRef.child("Exam").child(examId).child("Question").child(id).child("Answer").addListenerForSingleValueEvent(
-                new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for(DataSnapshot answerSnapshot : dataSnapshot.getChildren()){
-                            Answer answer = answerSnapshot.getValue(Answer.class);
-                            if(answer != null){
-                                Log.i(TAG, answer.toString());
-                                answersList.add(answer);
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
+        groupsExamRef = ApplicationClass.mDatabase.getReference().child("LearningMaterialsGroupExam");
+        groupsExamRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                groupExamList.clear();
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    LearningMaterialsGroupExam group = snapshot.getValue(LearningMaterialsGroupExam.class);
+                    if((group != null) && (group.getExam_id() == exam.getExam_id())){
+                        groupExamList.add(group);
                     }
                 }
-        );
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+    }
+
+    public void showMaterials(View view) {
+        getList();
+        Intent intent = new Intent(getApplicationContext(), AllMaterialsGroups.class);
+        startActivity(intent);
+    }
+
+    private void getList() {
+        groupList.clear();
+        ArrayList<LearningMaterialsGroup> allGroupsList = AllExamsList.groupsList ;
+        for(LearningMaterialsGroupExam groupExam : groupExamList){
+            int groupId = groupExam.getLearning_materials_group_id();
+            for(LearningMaterialsGroup group : allGroupsList){
+                if(group.getLearning_materials_group_id() == groupId){
+                    groupList.add(group);
+                }
+            }
+        }
     }
 
     public void onStartExamClick(View view) {
@@ -127,7 +146,7 @@ public class SingleExamView extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        //super.onBackPressed();
         finish();
     }
 
@@ -138,10 +157,10 @@ public class SingleExamView extends AppCompatActivity {
         isLearning = exam.getLearning_required();
         duration = exam.getDuration_of_exam();
         attempts = exam.getMax_attempts();
+        attempts -= (exam.getResultListSize());
         questions = exam.getMax_questions();
-
         questions = (questionsList.size() < questions) ? questionsList.size() : questions ;
-        attempts -= (exam.getResultsList().size());
+
 
         availableStr = to.getDate().toString().substring(0,10);
         learningStr = isLearning ? "yes" : "no" ;
@@ -159,4 +178,15 @@ public class SingleExamView extends AppCompatActivity {
 
         Log.d(TAG, "Update done");
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == 666){
+            setResult(666);
+            finish();
+        }
+    }
+
+
 }

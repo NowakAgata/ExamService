@@ -7,6 +7,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.examservice.R;
@@ -27,17 +28,19 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.ViewHo
         public class ViewHolder extends RecyclerView.ViewHolder
         {
             TextView txtEmail, txtName ;
+            Button button ;
             public ViewHolder(@NonNull final View itemView){
                 super(itemView);
                 txtEmail = itemView.findViewById(R.id.singleRowProfessorEmail);
                 txtName = itemView.findViewById(R.id.singleRowProfessorName);
+                button = itemView.findViewById(R.id.adminDeleteUserButton);
             }
         }
 
         @NonNull
         @Override
         public AllUsersAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.admin_professor_row, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.admin_user_row, parent, false);
             return new ViewHolder(view);
         }
 
@@ -45,6 +48,7 @@ public class AllUsersAdapter extends RecyclerView.Adapter<AllUsersAdapter.ViewHo
         public void onBindViewHolder(@NonNull AllUsersAdapter.ViewHolder holder, int position) {
 
             holder.itemView.setTag(position);
+            holder.button.setTag(position);
 
             User temp = users.get(position) ;
 

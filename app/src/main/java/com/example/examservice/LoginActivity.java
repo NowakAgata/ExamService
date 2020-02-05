@@ -1,6 +1,7 @@
 package com.example.examservice;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -30,7 +31,7 @@ import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
 
-
+    private static final int ROLE_ACTIVITY_REQUEST_CODE = 1;
     EditText etEmail, etPassword ;
     String email, name, surname, password, role;
     int id ;
@@ -84,13 +85,15 @@ public class LoginActivity extends AppCompatActivity {
     private void startRoleActivity() {
         if(role.equals(ApplicationClass.PROFESSOR_ROLE)){
             Intent intent = new Intent(getApplicationContext(), MainProfessorActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent, ROLE_ACTIVITY_REQUEST_CODE);
         }else if(role.equals(ApplicationClass.STUDENT_ROLE)){
             Intent intent = new Intent(getApplicationContext(), MainStudentActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent, ROLE_ACTIVITY_REQUEST_CODE);
+
         }else if(role.equals(ApplicationClass.ADMIN_ROLE)){
             Intent intent = new Intent(getApplicationContext(), MainAdminActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent, ROLE_ACTIVITY_REQUEST_CODE);
+
         }
     }
 
@@ -139,4 +142,13 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if(requestCode == ROLE_ACTIVITY_REQUEST_CODE){
+//            if(resultCode == 1000){
+//
+//            }
+//        }
+//    }
 }

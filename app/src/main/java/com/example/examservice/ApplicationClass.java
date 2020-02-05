@@ -1,6 +1,7 @@
 package com.example.examservice;
 
 import android.app.Application;
+import android.os.StrictMode;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -44,11 +45,18 @@ public class ApplicationClass extends Application {
     public static Set<String> allGroupsSet;
 
     public static int usersCount ;
+    public static MyFTPClient ftpclient = null;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
+        ftpclient = new MyFTPClient() ;
+        StrictMode.ThreadPolicy policy = new
+                StrictMode.ThreadPolicy.Builder()
+                .permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        connect();
         allUsersList = new ArrayList<>();
         allAdminsList = new ArrayList<>();
         allProfessorsList = new ArrayList<>();
@@ -98,6 +106,20 @@ public class ApplicationClass extends Application {
             }
         });
 
+    }
+
+    private void connect() {
+        new Thread(new Runnable() {
+            public void run() {
+                boolean status = false;
+                status = ftpclient.connect();
+                if (status) {
+                    Log.d(TAG, "Connection Success");
+                } else {
+                    Log.d(TAG, "Connection failed");
+                }
+            }
+        }).start();
     }
 
 }

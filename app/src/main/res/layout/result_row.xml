@@ -12,58 +12,62 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content">
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="90dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:text="Email:"
+                android:layout_weight="1"
+                android:text="POINTS"
+                android:gravity="center_vertical"
+                android:textSize="20sp"
                 android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/singleRowProfessorEmail"
-                android:layout_width="match_parent"
+                android:id="@+id/resultRowPoints"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Email"
-                android:gravity="center"/>
-
-
+                android:text="10"
+                android:gravity="center"
+                android:textSize="20sp"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
             android:orientation="horizontal">
-
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:text="Name:"
-                android:textStyle="bold"/>
-
-
-            <TextView
-                android:id="@+id/singleRowProfessorName"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Name Surname"
-                android:gravity="center"/>
+                android:text="IS PASSED"
+                android:gravity="center_vertical"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/resultRowIsPassed"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="nope"
+                android:gravity="center"
+                android:textSize="20sp"/>
         </LinearLayout>
 
     </LinearLayout>
-
 </androidx.cardview.widget.CardView>

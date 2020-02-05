@@ -71,6 +71,7 @@ public class Question {
     public int getAnswersCount(){
         return listOfAnswers.size();
     }
+
     @Override
     public String toString() {
         return "Question{" +
@@ -78,6 +79,7 @@ public class Question {
                 ", exam_id=" + exam_id +
                 ", id=" + id +
                 ", max_answers=" + max_answers +
+                ", listOfAnswers=" + listOfAnswers.toString() +
                 '}';
     }
 }
