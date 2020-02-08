@@ -1,9 +1,8 @@
-package com.example.examservice;
+package com.example.examservice.admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
@@ -15,6 +14,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.examservice.ApplicationClass;
+import com.example.examservice.R;
 import com.example.examservice.database.Date;
 import com.example.examservice.database.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -38,6 +39,8 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        preferences = getSharedPreferences(ApplicationClass.SHARED_PREFERENCES_NAME, MODE_PRIVATE);
 
         etName = findViewById(R.id.etRegisterFirstName);
         etSurname = findViewById(R.id.etRegisterLastName);
@@ -70,10 +73,8 @@ public class RegisterActivity extends AppCompatActivity {
                 } else{
                     Toast.makeText(getApplicationContext(), "Please choose your role.", Toast.LENGTH_SHORT).show();
                     etGroup.setInputType(InputType.TYPE_NULL);
-
                 }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 role = null ;
@@ -81,11 +82,8 @@ public class RegisterActivity extends AppCompatActivity {
         });
         mAuth = ApplicationClass.mAuth;
         usersRef = ApplicationClass.mDatabase.getReference("User");
+
     }
-
-
-
-
 
     public void addNewUser(View view){
         if(!validateForm()){
@@ -93,7 +91,6 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         Log.d(TAG, "creating user: " + email);
-
 
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -108,7 +105,7 @@ public class RegisterActivity extends AppCompatActivity {
                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
                            Toast.makeText(RegisterActivity.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
-                                    //updateUI(null);
+
                                 }
 
                             }
@@ -132,7 +129,11 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void updateCurrentUser() {
 
-        mAuth.signInWithEmailAndPassword(email, password)
+        String tempMail, tempPass ;
+        tempMail = preferences.getString(ApplicationClass.SHARED_PREFERENCES_EMAIL_KEY, null);
+        tempPass = preferences.getString(ApplicationClass.SHARED_PREFERENCES_PASSWORD_KEY, null);
+
+        mAuth.signInWithEmailAndPassword(tempMail, tempPass)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -148,17 +149,6 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 });
 
-        preferences = getSharedPreferences(ApplicationClass.SHARED_PREFERENCES_NAME, MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putString(ApplicationClass.SHARED_PREFERENCES_EMAIL_KEY, email);
-        editor.putString(ApplicationClass.SHARED_PREFERENCES_FIRST_NAME_KEY, name);
-        editor.putString(ApplicationClass.SHARED_PREFERENCES_LAST_NAME_KEY, surname);
-
-        editor.putString(ApplicationClass.SHARED_PREFERENCES_ROLE_KEY, role);
-        editor.apply();
-
-        Log.d(TAG, "Changing user in shared preferences: ");
-        Log.d(TAG, "username: " + name + ", role: " + role);
     }
 
     private boolean validateForm(){
@@ -197,6 +187,5 @@ public class RegisterActivity extends AppCompatActivity {
         int length = password.length();
         return (length >=6) ;
     }
-
 
 }

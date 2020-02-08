@@ -32,7 +32,6 @@ public class ExamAdministration extends AppCompatActivity {
     public static DatabaseReference examsRef ;
     public static DatabaseReference userExamsRef ;
     public static DatabaseReference materialExamsRef ;
-    public static ArrayList<User> usersList ;
     public static ArrayList<Exam> examsList ;
     public static ArrayList<UserExam> userExamsList ;
     public static ArrayList<LearningMaterialsGroupExam> materialExamsList ;
@@ -47,7 +46,6 @@ public class ExamAdministration extends AppCompatActivity {
 
         examsCount = 0;
         examsList = new ArrayList<>() ;
-        usersList = new ArrayList<>();
         userExamsList = new ArrayList<>();
         materialExamsList = new ArrayList<>();
         allStudents = ApplicationClass.allStudentsList ;
@@ -76,7 +74,6 @@ public class ExamAdministration extends AppCompatActivity {
         userExamsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                usersList.clear();
                 userExamsList.clear();
                 for(DataSnapshot userExamSnapshot : dataSnapshot.getChildren()){
                     UserExam userExam = userExamSnapshot.getValue(UserExam.class);

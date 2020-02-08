@@ -84,7 +84,5 @@ public class EditMaterial extends AppCompatActivity {
             setResult(RESULT_CANCELED);
             finish();
         }
-
-        //TODO sprawdzić czy edycja działa, domyślnie wyświetlac nazwe
     }
 }

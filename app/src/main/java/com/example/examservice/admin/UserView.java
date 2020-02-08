@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.example.examservice.ApplicationClass;
 import com.example.examservice.R;
-import com.example.examservice.database.Date;
 import com.example.examservice.database.User;
 
 public class UserView extends AppCompatActivity {
@@ -62,10 +61,6 @@ public class UserView extends AppCompatActivity {
         tvPass.setText(lastPass);
         tvReg.setText(reg);
 
-    }
-
-
-    public void delete(View view) {
     }
 
     public void editButton(View view) {

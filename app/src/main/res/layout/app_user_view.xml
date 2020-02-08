@@ -18,6 +18,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:gravity="center"
+            android:text="@string/user_view_expl"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/userNameTxtView"
@@ -58,7 +65,7 @@
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
             android:onClick="signOutButton"
-            android:text="sign out" />
+            android:text="@string/sign_out" />
 
         <Button
             android:layout_width="0dp"
@@ -68,7 +75,7 @@
             android:layout_marginEnd="8dp"
             android:layout_weight="1"
             android:onClick="onEditClick"
-            android:text="edit" />
+            android:text="@string/edit" />
 
 
     </LinearLayout>

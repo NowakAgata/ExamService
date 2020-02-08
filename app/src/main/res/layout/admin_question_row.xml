@@ -34,8 +34,7 @@
             android:text="content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textSize="16sp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,11 +44,11 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="answers:"
-                android:textSize="20sp"/>
+                android:layout_weight="1"
+                android:text="@string/answers"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/singleQuestionCorrectTxtView"
@@ -59,7 +58,6 @@
                 android:text="int"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:textStyle="bold"
                 android:textSize="20sp"/>
 
         </LinearLayout>

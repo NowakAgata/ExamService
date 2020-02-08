@@ -15,11 +15,10 @@ public class UserView extends AppCompatActivity {
 
 
     private final int EDIT_USER_REQUEST_CODE = 1;
-    TextView tvName, tvEmail, tvPassword ;
-    String firstName, lastName,name,   email, password ;
+    TextView tvName, tvEmail;
+    String firstName, lastName,name, email;
     SharedPreferences prefs;
     FirebaseAuth mAuth ;
-    //TODO zrobić wyświetlanie użytkownika i przejście do edycji
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

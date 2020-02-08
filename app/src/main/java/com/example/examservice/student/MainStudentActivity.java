@@ -24,7 +24,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class MainStudentActivity extends AppCompatActivity {
 
@@ -41,7 +40,6 @@ public class MainStudentActivity extends AppCompatActivity {
     public static ArrayList<Result> allResultsList ;
     public static int userId ;
     public static Exam currentExam ;
-    //public static int resultCounter;
     public static int i ;
 
     @Override
@@ -54,10 +52,9 @@ public class MainStudentActivity extends AppCompatActivity {
         allResultsList = new ArrayList<>();
 
         prefs = getSharedPreferences(ApplicationClass.SHARED_PREFERENCES_NAME, MODE_PRIVATE);
-        String hello = "Hello " + prefs.getString(ApplicationClass.SHARED_PREFERENCES_FIRST_NAME_KEY, "");
+        String hello = "Witaj " + prefs.getString(ApplicationClass.SHARED_PREFERENCES_FIRST_NAME_KEY, "");
         tvName.setText(hello);
         userId = prefs.getInt(ApplicationClass.SHARED_PREFERENCES_ID_KEY, 0);
-        //resultCounter =0 ;
 
         examsRef = ApplicationClass.mDatabase.getReference().child("Exam");
         userExamsRef = ApplicationClass.mDatabase.getReference().child("UserExam");
@@ -87,8 +84,6 @@ public class MainStudentActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
-        return;
     }
 
     private void getResults() {
@@ -106,8 +101,6 @@ public class MainStudentActivity extends AppCompatActivity {
                     for (DataSnapshot resultsSnapshot : dataSnapshot.getChildren()) {
                         Result result = resultsSnapshot.getValue(Result.class);
                         if (result != null) {
-                            //TODO może spróbować jednak od razu tu dodawać result do konkretnego examu
-                            //a nie w AllExamsList je sortować ?
                             allResultsList.add(result);
                             Log.i(TAG, result.toString());
                         }
@@ -128,10 +121,17 @@ public class MainStudentActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Exam exam = dataSnapshot.getValue(Exam.class);
-                exam.setUserExamId(user_exam_id);
-                exam.setExam_resolved(date);
-                Log.i(TAG, exam.toString());
-                examsList.add(exam);
+                if(exam != null) {
+                    DataSnapshot questionSnapshot = dataSnapshot.child("Question");
+                    if(questionSnapshot.getValue() != null){
+                        exam.setHas_questions(true);
+                        Log.d(TAG, "Has question");
+                    }
+                    exam.setUserExamId(user_exam_id);
+                    exam.setExam_resolved(date);
+                    Log.i(TAG, exam.toString());
+                    examsList.add(exam);
+                }
             }
 
             @Override

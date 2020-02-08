@@ -1,23 +1,50 @@
 package com.example.examservice.admin;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import com.example.examservice.ApplicationClass;
 import com.example.examservice.R;
-import com.example.examservice.RegisterActivity;
+import com.example.examservice.database.UserExam;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class UserAdministration extends AppCompatActivity {
 
+    public static ArrayList<UserExam> userExamList ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_user_administration);
+
+        DatabaseReference userExamRef = ApplicationClass.mDatabase.getReference().child("UserExam");
+        userExamList = new ArrayList<>();
+        userExamRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                userExamList.clear();
+                for(DataSnapshot snap : dataSnapshot.getChildren()){
+                    UserExam userExam = snap.getValue(UserExam.class);
+                    if(userExam != null){
+                        userExamList.add(userExam);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
     }
 

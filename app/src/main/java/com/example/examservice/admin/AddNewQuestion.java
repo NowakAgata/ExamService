@@ -14,11 +14,8 @@ import android.widget.Toast;
 import com.example.examservice.ApplicationClass;
 import com.example.examservice.R;
 import com.example.examservice.database.Answer;
-import com.example.examservice.database.Exam;
 import com.example.examservice.database.Question;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 

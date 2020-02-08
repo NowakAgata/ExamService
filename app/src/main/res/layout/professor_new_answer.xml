@@ -16,21 +16,30 @@
 
         <TextView
             android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:gravity="center"
+            android:text="@string/add_answer_expl"
+            android:textSize="22sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Answer:"
+            android:text="@string/answer"
             android:textSize="24sp"/>
 
         <EditText
             android:id="@+id/answerContentEditTxt"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="90dp"
+            android:background="@drawable/et_bg"
             />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Is it correct answer?"
+            android:text="@string/id_answer_correct"
             android:textSize="24sp"/>
 
         <Spinner
@@ -41,7 +50,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ADD"
+            android:text="@string/add"
             android:layout_gravity="center"
             android:onClick="addNewAnswerToList"/>
 

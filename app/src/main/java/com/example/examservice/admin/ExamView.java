@@ -16,6 +16,8 @@ import com.example.examservice.R;
 import com.example.examservice.database.Date;
 import com.example.examservice.database.Exam;
 import com.example.examservice.database.UserExam;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -67,9 +69,9 @@ public class ExamView extends AppCompatActivity {
         attempts = exam.getMax_attempts();
         questions = exam.getMax_questions();
 
-        availableStr = "from: " + from.getDate().toString().substring(0,10) + ", to: " + to.getDate().toString().substring(0,10);
-        learningStr = isLearning ? "yes" : "no" ;
-        durationStr = duration + " minute(s)" ;
+        availableStr = "od: " + from.getDate().toString().substring(0,10) + ", do: " + to.getDate().toString().substring(0,10);
+        learningStr = isLearning ? "tak" : "nie" ;
+        durationStr = duration + " minut" ;
         attemptsStr = Integer.toString(attempts);
         questionsStr = Integer.toString(questions);
 
@@ -89,8 +91,20 @@ public class ExamView extends AppCompatActivity {
     }
 
     public void deleteButton(View view) {
+
         if(canDelete){
-            Log.d(TAG, "Deleting this exam");
+            int examId = exam.getExam_id() ;
+            String id  = Integer.toString(examId) ;
+            DatabaseReference tempRef = ApplicationClass.mDatabase.getReference().child("Exam");
+            tempRef.child(id).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    Log.d(TAG, "Usunięto exam");
+                    setResult(RESULT_OK);
+                    finish();
+
+                }
+            });
         }else{
             Toast.makeText(getApplicationContext(), "You can't delete this exam, because there are UserExam connections", Toast.LENGTH_SHORT).show();
 

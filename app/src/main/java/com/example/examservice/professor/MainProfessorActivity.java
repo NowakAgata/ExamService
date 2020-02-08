@@ -59,7 +59,7 @@ public class MainProfessorActivity extends AppCompatActivity {
         professorName = preferences.getString(ApplicationClass.SHARED_PREFERENCES_FIRST_NAME_KEY, "professor");
 
         txtProfessor = findViewById(R.id.helloProfessorTxtView);
-        String temp = "Hello " + professorName + "!" ;
+        String temp = "Witaj " + professorName + "!" ;
         txtProfessor.setText(temp);
 
         examsCount = 0;
@@ -116,57 +116,20 @@ public class MainProfessorActivity extends AppCompatActivity {
     }
     private void checkPermission() {
 
-        // Here, thisActivity is the current activity
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
 
-            // Permission is not granted
-            // Should we show an explanation?
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                // Show an explanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
-            } else {
-                // No explanation needed; request the permission
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                        PERMISSIONS_REQUEST_READ_FILES);
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    PERMISSIONS_REQUEST_READ_FILES);
 
-                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-                // app-defined int constant. The callback method gets the
-                // result of the request.
-            }
+
         } else {
             Log.d(TAG,"Permission has already been granted");
-            // Permission has already been granted
         }
 
     }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case PERMISSIONS_REQUEST_READ_FILES: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
-                } else {
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                }
-                return;
-            }
-
-            // other 'case' lines to check for other
-            // permissions this app might request.
-        }
-    }
-
 
     public void professorAllExamsList(View view) {
         Intent intent = new Intent(getApplicationContext(), AllExamsList.class);
@@ -194,8 +157,6 @@ public class MainProfessorActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-
     }
 
     @Override

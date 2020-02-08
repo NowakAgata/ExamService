@@ -52,9 +52,9 @@ public class SingleExamView extends AppCompatActivity {
         tvInfo = findViewById(R.id.studentExamInfoTxtView);
         tvAvailable = findViewById(R.id.studentExamAvailableFrom);
         tvIsLearning = findViewById(R.id.studentExamIsLearningReq);
-        tvDuration =findViewById(R.id.studentExamDurationTime);
-        tvAttempts =findViewById(R.id.studentExamAttemptsLeft);
-        tvQuestions=findViewById(R.id.studentexamQuestions);
+        tvDuration = findViewById(R.id.studentExamDurationTime);
+        tvAttempts = findViewById(R.id.studentExamAttemptsLeft);
+        tvQuestions= findViewById(R.id.studentexamQuestions);
 
         exam = AllExamsList.currentExam ;
         questionsList = new ArrayList<>();
@@ -75,9 +75,7 @@ public class SingleExamView extends AppCompatActivity {
                 for(DataSnapshot questionSnapshot : dataSnapshot.getChildren()){
                     Question question = questionSnapshot.getValue(Question.class);
                     if(question != null){
-                        //addAnswersToQuestion(question);
                         Log.i(TAG, question.toString());
-                        //question.setListOfAnswers(answersList);
                         questionsList.add(question);
 
                     }
@@ -113,9 +111,14 @@ public class SingleExamView extends AppCompatActivity {
     }
 
     public void showMaterials(View view) {
-        getList();
-        Intent intent = new Intent(getApplicationContext(), AllMaterialsGroups.class);
-        startActivity(intent);
+
+        if(exam.getLearning_required()) {
+            getList();
+            Intent intent = new Intent(getApplicationContext(), AllMaterialsGroups.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(getApplicationContext(), "This exam doesn't require learning!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void getList() {
@@ -144,12 +147,6 @@ public class SingleExamView extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        //super.onBackPressed();
-        finish();
-    }
-
     private void updateTextViews() {
         name = exam.getName();
         info = exam.getAdditional_information();
@@ -163,8 +160,8 @@ public class SingleExamView extends AppCompatActivity {
 
 
         availableStr = to.getDate().toString().substring(0,10);
-        learningStr = isLearning ? "yes" : "no" ;
-        durationStr = duration + " minute(s)" ;
+        learningStr = isLearning ? "tak" : "nie" ;
+        durationStr = duration + " minut" ;
         attemptsStr = Integer.toString(attempts);
         questionsStr = Integer.toString(questions);
 

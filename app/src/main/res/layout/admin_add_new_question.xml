@@ -19,9 +19,10 @@
             android:id="@+id/tvNewQuestion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add new question"
-            android:textSize="30sp"
-            android:textColor="@color/white"
+            android:gravity="center_horizontal"
+            android:text="@string/add_question_expl"
+            android:textSize="24sp"
+            android:textColor="@color/black"
             android:fontFamily="sans-serif-medium"
             android:layout_marginTop="20dp"
             />
@@ -48,9 +49,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="Question:"
+                        android:text="@string/question"
                         android:textAllCaps="true"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="15sp" />
 
                     <EditText
@@ -78,9 +79,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="Max. number of answers:"
+                        android:text="@string/max_answers"
                         android:textAllCaps="true"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="15sp" />
 
                     <EditText
@@ -137,7 +138,7 @@
         android:layout_weight="1"
         android:layout_marginBottom="24dp"
         android:layout_gravity="center"
-        android:text="add"
+        android:text="@string/add"
         android:onClick="addNewQuestion"/>
 
 

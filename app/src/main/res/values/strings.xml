@@ -1,31 +1,113 @@
 <resources>
     <string name="app_name">Exam Service</string>
-    <string name="welcomeMessage">Welcome to our exam Service!</string>
-    <string name="chooseRoleMessage">Please choose how you want to use the application:</string>
-    <string name="professorMode">I\'m a professor</string>
-    <string name="studentMode">I\'m a student</string>
-    <string name="allFields">Please, fill all the data fields!</string>
+    <string name="welcomeMessage">Witamy w exam Service!</string>
+    <string name="allFields">Proszę wypełnić wszystkie pola!</string>
     <!-- professor mode strings  -->
-    <string name="professorModeWelcomeMessage">Hello professor! What would you like to do now?</string>
-    <string name="professorModeAddExam">add exam</string>
-    <string name="professorModeExamsList">your exams list</string>
-    <string name="professorModeAddStudent">add student</string>
-    <string name="somethingWrong">Something went wrong, sorry.</string>
+    <string name="professorModeWelcomeMessage">Witamy professor! Co chcesz zrobić?</string>
+    <string name="professorModeAddExam">dodaj egzamin</string>
+    <string name="professorModeExamsList">lista twoich egzaminów</string>
+    <string name="professorModeAddStudent">dodaj studenta</string>
+    <string name="somethingWrong">Coś poszło nie tak, przepraszamy.</string>
     <!-- student mode strings -->
 
 
     <string-array name="rolesArray">
         <item>Student</item>
-        <item>Professor</item>
-        <item>Admin</item>
+        <item>Profesor</item>
+        <item>Administrator</item>
     </string-array>
 
     <string-array name="boolArray">
-        <item>yes</item>
-        <item>no</item>
+        <item>tak</item>
+        <item>nie</item>
     </string-array>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="password_reset">Jeśli chcesz zresetować hasło, wpisz adres email.</string>
+    <string name="link_will_be_sent">Otrzymasz email resetujący. Odczytaj go i kliknij w link, żeby jak najszybciej móc korzystać z aplikacji!</string>
+    <string name="email">Email:</string>
+    <string name="ok">OK</string>
+    <string name="enterValidEmail">Podaj poprawny adres email</string>
+    <string name="admin_edit_user">Wprowadź wszystkie dane, które chcesz zmienić. Pamiętaj, że grupę studencką można zmienić tylko w przypadku edycji studenta.</string>
+    <string name="edit">EDYTUJ</string>
+    <string name="cant_delete">Nie możesz usunąć studenta, jeśli są do niego przypisane egzminy.</string>
+    <string name="professors_list">lista profesorów</string>
+    <string name="students_list">lista studentów</string>
+    <string name="admins_list">lista administratorów</string>
+    <string name="users_list">lista użytkowników</string>
+    <string name="add_new_user">Dodaj nowego użytkownika</string>
+    <string name="user_administration_exp">Możesz tu zobaczyć użytkowników pogrupowanych według roli lub dodać nową pozycję. Wybierz opcję!</string>
+    <string name="rola">Rola:</string>
+    <string name="last_logged">ostatnio zalogowano:</string>
+    <string name="password_changed">ostatnia zmiana hasła:</string>
+    <string name="registered_from">w systemie od:</string>
+    <string name="first_name">Imię:</string>
+    <string name="last_name">Nazwisko:</string>
+    <string name="students_group">Grupa studencka:</string>
+    <string name="password">Hasło:</string>
+    <string name="choose_role">Wybierz rolę:</string>
+    <string name="add">DODAJ</string>
+    <string name="files_groups_list">Lista grup materiałów naukowych</string>
+    <string name="file_administration_exp">Możesz tu obejrzeć wszystkie pliki, edytować je lub dodać nowe grupy lub zdjęcia.</string>
+    <string name="is_required">Obowiązkowe:</string>
+    <string name="add_new_materials_group">Dodajesz nową grupę materiałów. Wpisz jej nazwę oraz dodaj conajmniej jeden plik.</string>
+    <string name="name_of_group">Nazwa grupy:</string>
+    <string name="add_new_material">Dodajesz nowy materiał do grupy. Wpisz jego nazwę widzianą w aplikacji i wybierz plik.</string>
+    <string name="name_of_file">Nazwa pliku:</string>
+    <string name="is_required_question">Czy ten plik jest konieczny do zdania egzaminu?</string>
+    <string name="add_photo">Dodaj zdjęcie</string>
+    <string name="add_doc">Dodaj plik</string>
+    <string name="edit_material_expl">Edytujesz materiał naukowy. Możesz zmienić jego nazwę widzianą w systemie i obligatoryjność.</string>
+    <string name="sign_out">wyloguj</string>
+    <string name="user_view_expl">To widok Twojego profilu. Możesz się wylogować lub edytować swoje dane.</string>
+    <string name="confirm_password">Potwierdź hasło:</string>
+    <string name="edit_user">Wprowadź wszystkie dane, które chcesz zmienić. Hasła muszą być identyczne!</string>
+    <string name="admin_add_exam_exp">Dodajesz nowy egzamin. Wpisz wszystkie dane i potwierdź, żeby móc zacząć dodawać do niego pytania i odpowiedzi.</string>
+    <string name="name">Nazwa:</string>
+    <string name="info">Informacje:</string>
+    <string name="available_from">Dostępne od (YYYY-MM-DD):</string>
+    <string name="available_to">Dostępne do (YYYY-MM-DD):</string>
+    <string name="requires_learning">Czy egzamin wymaga materiałów?</string>
+    <string name="duration_time">Czas trwania egzaminu (mm):</string>
+    <string name="attempts">Maksymalna liczba podejść:</string>
+    <string name="questions">Maksymalna liczba pytań:</string>
+    <string name="percentage">Próg zdawalności (%):</string>
+    <string name="available">Dostępność:</string>
+    <string name="delete">USUŃ</string>
+    <string name="answers">Odpowiedzi:</string>
+    <string name="correct">Poprawna:</string>
+    <string name="add_question_expl">Dodajesz nowe pytanie. Wpisz liczbę odpowiedzi i dodaj conajmniej jedną.</string>
+    <string name="question">Pytanie:</string>
+    <string name="max_answers">Maksymalna liczba odpowiedzi:</string>
+    <string name="add_answer_expl">Dodajesz nową odpowiedź do pytnia. Wpisz ją oraz wybierz poprawność.</string>
+    <string name="answer">Odpowiedź:</string>
+    <string name="id_answer_correct">Czy dpowiedź jest poprawna?</string>
+    <string name="log_in">ZALOGUJ</string>
+    <string name="forgot_password">Nie pamiętam hasła</string>
+    <string name="exam_options_expl">Wybrałeś egzamin z listy. Możesz z tego miejsca zarządzać jego pytaniami, materiałami naukowymi oraz przypisanymi do niego studentami.</string>
+    <string name="see_and_edit_exam">Szczegóły egzaminu i edycja</string>
+    <string name="questions_list">Lista pytań</string>
+    <string name="add_question">Dodaj pytanie</string>
+    <string name="delete_exam">Usuń egzamin</string>
+    <string name="add_user_to_exam">Dodaj studenta</string>
+    <string name="main_prof">Z tego miejsca możesz wejść w listę wszystkich dostępnych egzaminów, studentów i materiałów naukowych.</string>
+    <string name="exams_list">Lista egzaminów</string>
+    <string name="add_exam">Dodaj nowy egzamin</string>
+    <string name="profile_view">Twój profil</string>
+    <string name="main_admin">Wybierz moduł, którycm chcesz zarządzać.</string>
+    <string name="users">Użytkownicy</string>
+    <string name="exams">Egzaminy</string>
+    <string name="files">Materiały naukowe</string>
+    <string name="main_student">Z tego miejsca możesz wejść w listę dostępnych egzaminów i wyników, oraz zobaczyć i edytować swój profil.</string>
+    <string name="results_list">Lista wyników</string>
+    <string name="attempts_left">Pozostałe podejścia:</string>
+    <string name="questions_left">Liczba pytań:</string>
+    <string name="see_materials">Lista materiałów</string>
+    <string name="start">START</string>
+    <string name="time_left">Czas:</string>
+    <string name="next">DALEJ</string>
+    <string name="finish">ZAKOŃCZ</string>
+    <string name="points">Punkty:</string>
+    <string name="is_passed">Zdane:</string>
 
 </resources>

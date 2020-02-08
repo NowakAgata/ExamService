@@ -26,7 +26,6 @@ public class AddNewExam extends AppCompatActivity {
     EditText etName, etInfo, etFrom, etTo, etDuration, etAttempts, etQuestions, etPercentage ;
     Spinner isLearningSpinner ;
     String name, info, from, to, duration, attempts, questions, percent;
-    Date fromDate, toDate;
     int durationInt, attemptsInt, questionsInt, percentageInt ;
     boolean isLearning ;
     public static DateFormat format ;

@@ -15,7 +15,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".student.AllMaterialsList"></activity>
+        <activity android:name=".admin.AddNewUserExam"></activity>
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".PasswordReset" />
+        <activity android:name=".student.AllMaterialsList" />
         <activity android:name=".student.AllMaterialsGroups" />
         <activity android:name=".professor.AddNewMaterial" />
         <activity android:name=".professor.NewLearningMaterialsGroup" />
@@ -60,7 +63,7 @@
         <activity android:name=".professor.AllExamsList" />
         <activity android:name=".admin.AllUsersAdapter" />
         <activity android:name=".admin.AllUsersListActivity" />
-        <activity android:name=".RegisterActivity" />
+        <activity android:name=".admin.RegisterActivity" />
         <activity android:name=".admin.MainAdminActivity" />
         <activity android:name=".student.MainStudentActivity" />
         <activity android:name=".professor.MainProfessorActivity" />

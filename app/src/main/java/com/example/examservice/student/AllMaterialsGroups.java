@@ -29,7 +29,6 @@ public class AllMaterialsGroups extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
     ArrayList<LearningMaterialsGroup> groupsList ;
     public static ArrayList<LearningMaterial> materialsList ;
-    DatabaseReference materialsRef ;
     LearningMaterialsGroup chosenGroup ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +37,6 @@ public class AllMaterialsGroups extends AppCompatActivity {
 
         groupsList = SingleExamView.groupList ;
         materialsList = new ArrayList<>();
-
-        materialsRef = ApplicationClass.mDatabase.getReference().child("LearningMaterialsGroup");
 
         recyclerView = findViewById(R.id.allStudentMaterialGroupsListView);
         recyclerView.setHasFixedSize(true);
@@ -65,10 +62,10 @@ public class AllMaterialsGroups extends AppCompatActivity {
 
     private void getList() {
         String groupId = Integer.toString(chosenGroup.getLearning_materials_group_id());
-        //TODO tu coś nie gra, dziwnie wyświetla się lista materiałów, jest jeden materiał a pobiera 5
         Log.d(TAG, "Group id: " + groupId);
-        materialsRef.child(groupId).child("LearningMaterial");
-        materialsRef.addValueEventListener(new ValueEventListener() {
+        DatabaseReference tempRef = ApplicationClass.mDatabase.getReference().child("LearningMaterialsGroup")
+                .child(groupId).child("LearningMaterial");
+        tempRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 materialsList.clear();

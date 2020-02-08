@@ -28,18 +28,18 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="Hello Student!"
-                android:textColor="@color/light_button_background"
+                android:textColor="@color/black"
                 android:gravity="center"
-                android:textSize="48sp"/>
+                android:textSize="28sp"/>
 
             <TextView
                 android:layout_width  ="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="What do you want to do?"
-                android:textColor="@color/light_button_background"
+                android:text="@string/main_student"
+                android:textColor="@color/black"
                 android:gravity="center"
-                android:textSize="32sp"/>
+                android:textSize="22sp"/>
 
         </LinearLayout>
         <LinearLayout
@@ -55,7 +55,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
                 android:background="@drawable/button_filled_with_color_bg"
-                android:text="available exams"
+                android:text="@string/exams_list"
                 android:onClick="studentExamsList"/>
 
             <Button
@@ -64,7 +64,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
                 android:background="@drawable/button_filled_with_color_bg"
-                android:text="results list"
+                android:text="@string/results_list"
                 android:onClick="studentResultList"/>
 
             <Button
@@ -73,7 +73,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
                 android:background="@drawable/button_filled_with_color_bg"
-                android:text="my profile "
+                android:text="@string/profile_view"
                 android:onClick="studentProfileView"/>
 
         </LinearLayout>

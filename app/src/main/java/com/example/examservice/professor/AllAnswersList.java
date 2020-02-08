@@ -41,8 +41,6 @@ public class AllAnswersList extends AppCompatActivity {
         examId = intent.getStringExtra("EXAM_ID");
         questionId = intent.getStringExtra("QUESTION_ID");
 
-
-
         answerList = AllQuestionsList.answerArrayList;
 
         recyclerView = findViewById(R.id.allAnswersListView);

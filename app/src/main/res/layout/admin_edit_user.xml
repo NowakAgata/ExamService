@@ -17,9 +17,11 @@
         <TextView
             android:id="@+id/imgViewLogo"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="Please change the data that you want to edit. If you want to edit password please write it and confirm."
-            android:textSize="16sp"
+            android:layout_height="160dp"
+            android:text="@string/admin_edit_user"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
             android:layout_marginTop="48dp"
             />
         <RelativeLayout
@@ -28,16 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/imgViewLogo">
 
-            <TextView
-                android:id="@+id/tv_edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Edit app user"
-                android:textSize="30sp"
-                android:textColor="@color/white"
-                android:fontFamily="sans-serif-medium"
-                android:layout_marginTop="20dp"
-                />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -55,9 +48,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="First name"
+                        android:text="@string/first_name"
                         android:textAllCaps="true"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="15sp"
                         />
                     <EditText
@@ -86,9 +79,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="Last name"
+                        android:text="@string/last_name"
                         android:textAllCaps="true"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="15sp"
                         />
                     <EditText
@@ -108,36 +101,7 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:text="Password"
-                        android:textAllCaps="true"
-                        android:textColor="@color/white"
-                        android:textSize="15sp"
-                        />
-                    <EditText
-                        android:id="@+id/adminEditFirstPassword"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@drawable/et_bg"
-                        android:textSize="15sp"
-                        android:textColor="@color/white"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:fontFamily="sans-serif-light"
-                        android:inputType="textPassword"
-                        />
-
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -148,40 +112,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="Confirm password"
+                        android:text="@string/students_group"
                         android:textAllCaps="true"
-                        android:textColor="@color/white"
-                        android:textSize="15sp"
-                        />
-                    <EditText
-                        android:id="@+id/adminEditSecondPassword"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@drawable/et_bg"
-                        android:textSize="15sp"
-                        android:textColor="@color/white"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp"
-                        android:fontFamily="sans-serif-light"
-
-                        />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-light"
-                        android:text="Student's group name"
-                        android:textAllCaps="true"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="15sp"
                         />
 
@@ -208,22 +141,21 @@
         </RelativeLayout>
 
 
-            <Button
-                android:id="@+id/butRegister"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/relativeLayoutEdit"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="40dp"
-                android:layout_marginTop="32dp"
-                android:text="edit"
-                android:textSize="15sp"
-                android:textColor="@color/black"
-                android:background="@drawable/button_filled_bg"
-                android:onClick="confirmEdit"
-                />
+        <Button
+            android:id="@+id/butRegister"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="32dp"
+            android:layout_alignParentBottom="true"
+            android:text="@string/edit"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:background="@drawable/button_filled_bg"
+            android:onClick="confirmEdit"
+            />
 
     </RelativeLayout>
 

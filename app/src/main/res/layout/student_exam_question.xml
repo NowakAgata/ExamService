@@ -20,7 +20,7 @@
             android:layout_weight="2"
             android:layout_margin="16dp"
             android:text="name"
-            android:textSize="30sp"
+            android:textSize="22sp"
             android:gravity="center"
             />
         <TextView
@@ -30,7 +30,7 @@
             android:layout_weight="1"
             android:layout_margin="8dp"
             android:text="info"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:gravity="center"
             />
 
@@ -45,7 +45,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="Questions left: "
+            android:text="@string/questions_left"
             android:textSize="22sp"
             android:gravity="center"
             android:layout_gravity="center"/>
@@ -74,7 +74,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="Time left: "
+            android:text="@string/time_left"
             android:textSize="22sp"
             android:gravity="center"
             android:layout_gravity="center"/>
@@ -103,7 +103,6 @@
         android:lines="3"
         android:textSize="18sp"
         android:inputType="textMultiLine"
-        android:text="Name"
         android:textStyle="bold"/>
 
     <LinearLayout
@@ -119,7 +118,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginTop="16dp"
-        android:text="next"
+        android:text="@string/next"
         android:gravity="center"
         android:layout_gravity="center"
         android:onClick="onNextClick"/>

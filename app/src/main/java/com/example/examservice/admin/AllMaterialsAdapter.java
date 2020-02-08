@@ -1,7 +1,6 @@
 package com.example.examservice.admin;
 
 import android.content.Context;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +54,7 @@ public class AllMaterialsAdapter extends RecyclerView.Adapter<AllMaterialsAdapte
 
         LearningMaterial temp = materials.get(position);
 
-        String is = temp.isIs_required() ? "yes" : "no" ;
+        String is = temp.isIs_required() ? "tak" : "nie" ;
         holder.name.setText(temp.getName());
         holder.required.setText(is);
 

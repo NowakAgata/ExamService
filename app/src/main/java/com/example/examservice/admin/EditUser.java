@@ -7,21 +7,18 @@ import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.example.examservice.ApplicationClass;
 import com.example.examservice.R;
-import com.example.examservice.database.Date;
 import com.example.examservice.database.User;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 
 public class EditUser extends AppCompatActivity {
 
     private final String TAG = "TAGEditUser" ;
     User user ;
-    EditText etName, etSurname, etFirst, etSecond, etGroup ;
-    String name, surname, first, second, group, role ;
+    EditText etName, etSurname, etGroup ;
+    String name, surname, group, role ;
     boolean isStudent ;
     DatabaseReference userRef ;
 
@@ -35,8 +32,6 @@ public class EditUser extends AppCompatActivity {
 
         etName = findViewById(R.id.adminEditFirstName);
         etSurname = findViewById(R.id.adminEditLastName);
-        etFirst = findViewById(R.id.adminEditFirstPassword);
-        etSecond = findViewById(R.id.adminEditSecondPassword);
         etGroup = findViewById(R.id.adminEditGroup);
 
         updateViews();
@@ -61,31 +56,14 @@ public class EditUser extends AppCompatActivity {
     }
 
     public void confirmEdit(View view) {
-        String newName, newSurname, newFirst, newSecond, newGroup, userId;
+        String newName, newSurname, newGroup, userId;
         newName = etName.getText().toString();
         newSurname = etSurname.getText().toString();
-        newFirst = etFirst.getText().toString();
-        newSecond = etSecond.getText().toString();
         newGroup = etGroup.getText().toString();
         userId = Integer.toString(user.getId());
         boolean isChanged = false;
 
-        if ((newFirst.isEmpty() && !newSecond.isEmpty()) || !newFirst.isEmpty() && newSecond.isEmpty()) {
-            Toast.makeText(getApplicationContext(), "If you want to change password, fill both fields!", Toast.LENGTH_SHORT).show();
-            return;
-        }else if(!newFirst.equals(newSecond)){
-            Toast.makeText(getApplicationContext(), "Passwords are different!", Toast.LENGTH_SHORT).show();
-            return;
-        }else if(!newFirst.isEmpty()){
-            Log.d(TAG, "Editing user's password");
-//            Date date = new Date();
-//            userRef.child(userId).child("last_password_change").setValue(date);
-//            user.setLast_password_change(date);
-//            isChanged = true ;
-//            FirebaseUser firebaseUser ;
-            //TODO jak zrobić zmianę hasła ????
-
-        }if(!name.equals(newName)){
+        if(!name.equals(newName)){
             Log.d(TAG, "Editing user's name.");
             userRef.child(userId).child("first_name").setValue(newName);
             user.setFirst_name(newName);

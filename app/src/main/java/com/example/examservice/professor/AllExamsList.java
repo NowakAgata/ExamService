@@ -1,6 +1,5 @@
 package com.example.examservice.professor;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,17 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-import com.example.examservice.ApplicationClass;
 import com.example.examservice.R;
 import com.example.examservice.database.Exam;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.core.SyncTree;
 
 import java.util.ArrayList;
 
@@ -30,7 +22,6 @@ public class AllExamsList extends AppCompatActivity {
     AllExamsAdapter examsAdapter ;
     RecyclerView.LayoutManager layoutManager;
     public static Exam currentExam ;
-    DatabaseReference examRef ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

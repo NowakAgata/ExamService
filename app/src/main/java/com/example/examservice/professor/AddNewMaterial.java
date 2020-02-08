@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
@@ -23,7 +24,6 @@ import com.example.examservice.database.LearningMaterial;
 import com.example.examservice.database.LearningMaterialsGroup;
 import com.google.firebase.database.DatabaseReference;
 
-import java.io.File;
 
 public class AddNewMaterial extends AppCompatActivity {
 
@@ -31,7 +31,6 @@ public class AddNewMaterial extends AppCompatActivity {
     EditText etName ;
     String name;
     private MyFTPClient ftpclient = null;
-    boolean status ;
     int materialsCounter ;
     Spinner isLearningSpinner ;
     boolean isLearning, newGroup ;
@@ -41,6 +40,9 @@ public class AddNewMaterial extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.professor_add_new_material);
+
+        String externalDir = Environment.getExternalStorageState();
+        Log.d(TAG, "environment: " + externalDir);
 
         ftpclient = ApplicationClass.ftpclient;
         newGroup = getIntent().getBooleanExtra("NEW_GROUP", false) ;
@@ -70,21 +72,6 @@ public class AddNewMaterial extends AppCompatActivity {
     }
 
 
-
-    public void addDocument(View view) {
-
-        name= etName.getText().toString();
-        if(name.isEmpty()){
-            Toast.makeText(getApplicationContext(), "Please enter file name first!", Toast.LENGTH_SHORT).show();
-            return ;
-        }
-        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
-        intent.addCategory(Intent.CATEGORY_OPENABLE);
-        intent.setType("*/*");
-
-        startActivityForResult(intent, 2000);
-    }
-
     public void addPhoto(View view) {
         name= etName.getText().toString();
         if(name.isEmpty()){
@@ -102,7 +89,6 @@ public class AddNewMaterial extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1000){
             if(resultCode == RESULT_OK){
-
                 Uri selectedImage = data.getData();
                 if(selectedImage != null) {
                     String[] filePathColumn = {MediaStore.Images.Media.DATA};
@@ -114,18 +100,6 @@ public class AddNewMaterial extends AppCompatActivity {
                     Log.d(TAG, "path: " + imgDecodableString) ;
                     String fileName = ftpclient.ftpUpload(imgDecodableString);
                     addMaterial(fileName);
-                }
-
-            }
-        }else if(requestCode == 2000){
-            if(resultCode == RESULT_OK){
-                //TODO dodawanie doca nie działa plus usunąć przycisk list files
-                Uri selectedDoc = data.getData();
-                if(selectedDoc != null) {
-                    File file = new File(selectedDoc.getPath());
-                    String path = file.getAbsolutePath();
-                    Log.d(TAG, "path: " + path);
-                    ftpclient.ftpUpload(path);
                 }
             }
         }
@@ -157,8 +131,4 @@ public class AddNewMaterial extends AppCompatActivity {
         }
     }
 
-
-    public void listFiles(View view) {
-        ftpclient.printFilesList();
-    }
 }

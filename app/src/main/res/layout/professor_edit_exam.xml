@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:textSize="32sp"
+                android:textSize="22sp"
                 android:textStyle="bold"
                 android:text="exam name"
                 android:inputType="text"
@@ -34,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:inputType="text"
                 android:text="exam info"
                 android:gravity="center" />
@@ -42,30 +42,30 @@
         </LinearLayout>
 
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="available from:"
-                android:textStyle="bold"
-                android:textSize="20sp"/>
+                android:text="@string/available_from"
+                android:textSize="20sp"
+                android:textColor="@color/black"/>
+
             <EditText
                 android:id="@+id/examAvailableFromEdit"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:inputType="date"
                 android:text="date"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
 
 
         </LinearLayout>
@@ -74,49 +74,48 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="to:"
-                android:textStyle="bold"
+                android:text="@string/available_to"
+                android:textColor="@color/black"
                 android:textSize="20sp"/>
             <EditText
                 android:id="@+id/examAvailableToEdit"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:inputType="date"
                 android:text="date"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
 
 
         </LinearLayout>
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="learning required:"
-                android:textStyle="bold"
+                android:text="@string/requires_learning"
+                android:textColor="@color/black"
                 android:textSize="20sp"/>
             <Spinner
                 android:id="@+id/examIsLearningReqEditEspinner"
-                android:layout_width="0dp"
-                android:layout_weight="2"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:layout_gravity="center"/>
 
 
@@ -126,25 +125,25 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="duration:"
-                android:textStyle="bold"
+                android:text="@string/duration_time"
+                android:textColor="@color/black"
                 android:textSize="20sp"/>
             <EditText
                 android:id="@+id/examDurationTimeEdit"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:text="time"
                 android:inputType="number"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
 
 
         </LinearLayout>
@@ -153,51 +152,52 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="max attempts:"
-                android:textStyle="bold"
+                android:text="@string/attempts"
+                android:textColor="@color/black"
                 android:textSize="20sp"/>
             <EditText
                 android:id="@+id/examMaxAttemptsEdit"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:inputType="number"
                 android:text="int"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
 
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="max questions:"
+                android:text="@string/questions"
                 android:gravity="center_vertical"
-                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:textSize="20sp"/>
             <EditText
                 android:id="@+id/examMaxQuestionsEdit"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center"
                 android:layout_weight="2"
                 android:text="int"
                 android:inputType="number"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
 
 
         </LinearLayout>
@@ -208,7 +208,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_gravity="center"
-            android:text="OK"
+            android:text="@string/ok"
             android:onClick="ok"
             android:background="@drawable/button_filled_bg"/>
 

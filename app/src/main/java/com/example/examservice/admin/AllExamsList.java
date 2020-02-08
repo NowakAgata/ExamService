@@ -1,5 +1,6 @@
 package com.example.examservice.admin;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -68,6 +69,7 @@ public class AllExamsList extends AppCompatActivity {
             startActivityForResult(intent, EDIT_EXAM_REQUEST_CODE);
         }else if(showUsers){
             Intent intent = new Intent(getApplicationContext(), AllUserExamList.class);
+            intent.putExtra("EXAM_ID", currentExam.getExam_id());
             startActivityForResult(intent, EDIT_USERS_REQUEST_CODE);
         }else if(showQuestions){
             Intent intent = new Intent(getApplicationContext(), AllQuestionsList.class);
@@ -79,4 +81,12 @@ public class AllExamsList extends AppCompatActivity {
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == EDIT_EXAM_REQUEST_CODE && resultCode == RESULT_OK){
+            examsList = ExamAdministration.examsList;
+            examsAdapter.notifyDataSetChanged();
+        }
+    }
 }

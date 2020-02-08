@@ -51,7 +51,7 @@ public class AllResultsAdapter extends  RecyclerView.Adapter<AllResultsAdapter.V
 
         String points = Integer.toString(temp.getPoints());
         holder.txtPoints.setText(points);
-        String passed = temp.getIs_passed() ? "yes" : "no";
+        String passed = temp.getIs_passed() ? "tak" : "nie";
         holder.txtPassed.setText(passed);
 
     }

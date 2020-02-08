@@ -17,7 +17,6 @@ import android.widget.TextView;
 
 import com.example.examservice.ApplicationClass;
 import com.example.examservice.R;
-import com.example.examservice.RegisterActivity;
 import com.example.examservice.UserView;
 
 public class MainAdminActivity extends AppCompatActivity {
@@ -28,6 +27,7 @@ public class MainAdminActivity extends AppCompatActivity {
     String username ;
     TextView helloAdmin ;
     SharedPreferences preferences ;
+    String pass, mail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,57 +46,20 @@ public class MainAdminActivity extends AppCompatActivity {
 
     private void checkPermission() {
 
-        // Here, thisActivity is the current activity
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
 
-            // Permission is not granted
-            // Should we show an explanation?
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-                // Show an explanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
-            } else {
-                // No explanation needed; request the permission
-                ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                        PERMISSIONS_REQUEST_READ_FILES);
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    PERMISSIONS_REQUEST_READ_FILES);
 
-                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-                // app-defined int constant. The callback method gets the
-                // result of the request.
-            }
+
         } else {
             Log.d(TAG,"Permission has already been granted");
-            // Permission has already been granted
         }
 
     }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           String[] permissions, int[] grantResults) {
-        switch (requestCode) {
-            case PERMISSIONS_REQUEST_READ_FILES: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // permission was granted, yay! Do the
-                    // contacts-related task you need to do.
-                } else {
-                    // permission denied, boo! Disable the
-                    // functionality that depends on this permission.
-                }
-                return;
-            }
-
-            // other 'case' lines to check for other
-            // permissions this app might request.
-        }
-    }
-
 
     public void usersMode(View view) {
         Intent intent = new Intent(getApplicationContext(), UserAdministration.class);
@@ -115,6 +78,8 @@ public class MainAdminActivity extends AppCompatActivity {
 
     public void editProfile(View view) {
         Intent intent = new Intent(getApplicationContext(), UserView.class);
+        intent.putExtra("ADMIN_PASS", pass);
+        intent.putExtra("ADMIN_EMAIL", mail);
         startActivityForResult(intent, EDIT_PROFILE_REQUEST_CODE);
     }
 

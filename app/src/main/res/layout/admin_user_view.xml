@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -47,20 +46,20 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="role:"
+                android:text="@string/rola"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
             <TextView
                 android:id="@+id/adminUserRoleTxtView"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center"
                 android:layout_weight="2"
                 android:text="role"
@@ -73,20 +72,20 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="last logged:"
+                android:text="@string/last_logged"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
             <TextView
                 android:id="@+id/adminUserLastLoggedTxtView"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center"
                 android:layout_weight="2"
                 android:text="date"
@@ -99,20 +98,20 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="password changed:"
+                android:text="@string/password_changed"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
             <TextView
                 android:id="@+id/adminUserLastChangeTxtView"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center"
                 android:layout_weight="2"
                 android:text="date"
@@ -125,20 +124,20 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="registered from:"
+                android:text="@string/registered_from"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
             <TextView
                 android:id="@+id/adminUserRegistrationTxtView"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center"
                 android:layout_weight="2"
                 android:text="date"
@@ -148,23 +147,22 @@
         </LinearLayout>
 
 
-        <Button
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:layout_gravity="center"
-            android:layout_margin="8dp"
-            android:text="edit"
-            android:onClick="editButton"/>
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:text="@string/edit"
+                android:onClick="editButton"/>
 
 
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:layout_gravity="center"
-            android:layout_margin="8dp"
-            android:text="delete "
-            android:onClick="delete"/>
+        </LinearLayout>
 
 
 

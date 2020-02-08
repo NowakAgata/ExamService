@@ -27,24 +27,24 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="Hello Professor!"
-                android:textColor="@color/light_button_background"
+                android:textColor="@color/black"
                 android:gravity="center"
-                android:textSize="48sp"/>
+                android:textSize="22sp"/>
 
             <TextView
                 android:layout_width  ="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="What do you want to do?"
-                android:textColor="@color/light_button_background"
+                android:text="@string/main_prof"
+                android:textColor="@color/black"
                 android:gravity="center"
-                android:textSize="32sp"/>
+                android:textSize="22sp"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="24dp"
             android:layout_weight="3"
             android:orientation="vertical">
 
@@ -55,7 +55,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
                 android:background="@drawable/button_filled_with_color_bg"
-                android:text="all exams list"
+                android:text="@string/exams_list"
                 android:onClick="professorAllExamsList"/>
 
             <Button
@@ -65,7 +65,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
                 android:background="@drawable/button_filled_with_color_bg"
-                android:text="add new exam"
+                android:text="@string/add_exam"
                 android:onClick="professorAddNewExam"/>
 
             <Button
@@ -75,7 +75,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
                 android:background="@drawable/button_filled_with_color_bg"
-                android:text="see students by group"
+                android:text="@string/students_list"
                 android:onClick="professorSeeStudents"/>
 
             <Button
@@ -85,7 +85,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
                 android:background="@drawable/button_filled_with_color_bg"
-                android:text="see materials by group"
+                android:text="@string/files_groups_list"
                 android:onClick="professorSeeMaterials"/>
 
             <Button
@@ -95,7 +95,7 @@
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
                 android:background="@drawable/button_filled_with_color_bg"
-                android:text="my profile"
+                android:text="@string/profile_view"
                 android:onClick="professorProfileView"/>
 
         </LinearLayout>

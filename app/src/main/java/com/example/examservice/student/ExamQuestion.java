@@ -61,7 +61,7 @@ public class ExamQuestion extends AppCompatActivity {
         points = 0 ;
 
         button = findViewById(R.id.nextQuestionButton);
-        button.setText("START");
+        button.setText(R.string.start);
 
         fragmentLayout = findViewById(R.id.answersFragment);
         answersRef = ApplicationClass.mDatabase.getReference();
@@ -111,7 +111,7 @@ public class ExamQuestion extends AppCompatActivity {
     private void setQuestion() {
 
          if(allQuestionsList.size() < questions){
-             questions = questionsList.size();
+             questions = allQuestionsList.size();
              questionsList = allQuestionsList;
          }else{
              RandomIntsWithoutRepetition rand = new RandomIntsWithoutRepetition(allQuestionsList.size());
@@ -136,7 +136,6 @@ public class ExamQuestion extends AppCompatActivity {
                     new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            //answersList.clear();
                             for (DataSnapshot answerSnapshot : dataSnapshot.getChildren()) {
                                 Answer answer = answerSnapshot.getValue(Answer.class);
                                 if (answer != null) {
@@ -164,7 +163,6 @@ public class ExamQuestion extends AppCompatActivity {
                 }
             }
         }
-
     }
 
     private void updateTextVies() {
@@ -179,16 +177,14 @@ public class ExamQuestion extends AppCompatActivity {
 
 
         ArrayList<Answer> allAnswersList = question.getAnswersList();
-        //ArrayList<Answer> temp = new ArrayList<>();
         tempAnswerList.clear();
         int answers = question.getMax_answers() ;
-        if(allAnswersList.size() < answers){
-            //answers = allAnswersList.size();
+        if(allAnswersList.size() <= answers){
             tempAnswerList = allAnswersList;
         }else{
             RandomIntsWithoutRepetition rand = new RandomIntsWithoutRepetition(allAnswersList.size());
             int index;
-            for(int i = 0; i<questions; i++){
+            for(int i = 0; i<answers; i++){
                 index = rand.get();
                 tempAnswerList.add(allAnswersList.get(index));
                 Log.d("TAGWylosowano: " , allAnswersList.get(index).toString());
@@ -204,7 +200,6 @@ public class ExamQuestion extends AppCompatActivity {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     tempAnswerList.get(buttonView.getId()).setIs_active(isChecked);
-                    //Log.i(TAG, "changed " + )
                 }
             });
 
@@ -215,6 +210,7 @@ public class ExamQuestion extends AppCompatActivity {
 
     public void onNextClick(View view) {
 
+        Log.d(TAG, "counter= " + counter) ;
         if(counter == 0){
             sortAnswers();
             for(Question question : questionsList){
@@ -223,18 +219,9 @@ public class ExamQuestion extends AppCompatActivity {
             counter++ ;
             updateTextVies();
             startTimer();
-        }
-//        else if(counter == questions) {
-//            if(givePoint()) {
-//                Log.d(TAG, "jest punkt");
-//                points++ ;
-//            }
-//            addResult();
-//
-//        }
-        else{
+        }else{
             if((counter+1) == questions){
-                button.setText("FINISH");
+                button.setText(R.string.finish);
             }
             //counter++;
             if(givePoint()) {
@@ -244,7 +231,6 @@ public class ExamQuestion extends AppCompatActivity {
             if(counter == questions){
                 addResult();
             }else {
-                //int temp = counter - 1;
                 question = questionsList.get(counter);
                 counter++;
                 fragmentLayout.removeAllViews();
@@ -283,14 +269,16 @@ public class ExamQuestion extends AppCompatActivity {
     private void startTimer(){
 
         int duration = exam.getDuration_of_exam();
-        //tvTime.setTextSize(100);
         duration *=60000;
         countDownTimer = new CountDownTimer(duration, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                String temp = "" + (millisUntilFinished/1000);
+                int time  = (int) (millisUntilFinished/1000);
+                int minutes, seconds ;
+                minutes = time/60 ;
+                seconds = time%60 ;
+                String temp = "" + minutes + ":" + seconds ;
                 tvTime.setText(temp);
-                //TODO zmienić wyświetlanie casu na mm:ss
             }
 
             @Override
@@ -303,8 +291,6 @@ public class ExamQuestion extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
         Toast.makeText(getApplicationContext(), "You cant go back now!", Toast.LENGTH_SHORT).show();
-        return;
     }
 }

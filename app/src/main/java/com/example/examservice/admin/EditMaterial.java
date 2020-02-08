@@ -2,7 +2,6 @@ package com.example.examservice.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,7 +9,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.examservice.ApplicationClass;
 import com.example.examservice.R;
@@ -87,6 +85,5 @@ public class EditMaterial extends AppCompatActivity {
             finish();
         }
 
-        //TODO sprawdzić czy edycja działa, domyślnie wyświetlac nazwe
     }
 }

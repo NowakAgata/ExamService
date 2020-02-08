@@ -34,9 +34,7 @@ public class StudentGroupsList extends AppCompatActivity {
 
         Set<String> tempSet = ApplicationClass.allGroupsSet ;
         groupsList = new ArrayList<>();
-        for(String temp : tempSet){
-            groupsList.add(temp);
-        }
+        groupsList.addAll(tempSet);
 
         recyclerView = findViewById(R.id.allGroupsListView);
         recyclerView.setHasFixedSize(true);

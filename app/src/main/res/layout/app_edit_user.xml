@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,111 +8,186 @@
     android:background="@color/role_background"
     tools:context=".EditUser">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="7"
-        android:layout_margin="16dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:layout_margin="24dp"
+        android:layout_centerInParent="true">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/imgViewLogo"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="5"
-            android:layout_marginTop="100dp"
+            android:layout_height="160dp"
+            android:text="@string/edit_user"
+            android:textSize="20sp"
+            android:textStyle="bold"
             android:gravity="center"
-            android:orientation="vertical">
-            <EditText
-                android:id="@+id/userNameEditTxt"
+            android:layout_marginTop="48dp"
+            />
+        <RelativeLayout
+            android:id="@+id/relativeLayoutEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgViewLogo">
+
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:textSize="32sp"
-                android:text="name"
-                android:inputType="text"
-                android:gravity="center" />
-            <EditText
-                android:id="@+id/userSurnameEditTxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:textSize="32sp"
-                android:text="surname"
-                android:inputType="text"
-                android:gravity="center" />
+                android:layout_below="@+id/tv_edit"
+                android:orientation="vertical">
 
 
-        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="@string/first_name"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        />
+                    <EditText
+                        android:id="@+id/userNameEditTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/et_bg"
+                        android:textSize="15sp"
+                        android:textColor="@color/white"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:fontFamily="sans-serif-light"
 
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:gravity="center_vertical"
-                android:text="Password: "/>
-
-            <EditText
-                android:id="@+id/userPasswordFirstEditTxt"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:inputType="textPassword"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:orientation="horizontal">
+                        />
 
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:gravity="center_vertical"
-                android:text="Please repeat: "/>
+                </LinearLayout>
 
-            <EditText
-                android:id="@+id/userPasswordSecondEditTxt"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:textSize="20sp"
-                android:gravity="center"
-                android:inputType="textPassword" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="@string/last_name"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        />
+                    <EditText
+                        android:id="@+id/userSurnameEditTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/et_bg"
+                        android:textSize="15sp"
+                        android:textColor="@color/white"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:fontFamily="sans-serif-light"
+
+                        />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="@string/password"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        />
+                    <EditText
+                        android:id="@+id/userPasswordFirstEditTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/et_bg"
+                        android:textSize="15sp"
+                        android:textColor="@color/white"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:fontFamily="sans-serif-light"
+                        android:inputType="textPassword"
+                        />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="@string/confirm_password"
+                        android:textAllCaps="true"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        />
+                    <EditText
+                        android:id="@+id/userPasswordSecondEditTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/et_bg"
+                        android:textSize="15sp"
+                        android:textColor="@color/white"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:fontFamily="sans-serif-light"
+
+                        />
+
+
+                </LinearLayout>
 
 
 
 
+            </LinearLayout>
 
-    </LinearLayout>
+
+        </RelativeLayout>
 
 
         <Button
-            android:layout_width="100dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:text="OK"
-            android:onClick="onOkClick"/>
+            android:id="@+id/butRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relativeLayoutEdit"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/edit"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:background="@drawable/button_filled_bg"
+            android:onClick="onOkClick"
+            />
 
+    </RelativeLayout>
 
-
-</LinearLayout>
+</RelativeLayout>

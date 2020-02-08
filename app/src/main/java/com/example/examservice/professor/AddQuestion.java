@@ -15,8 +15,6 @@ import com.example.examservice.R;
 import com.example.examservice.database.Answer;
 import com.example.examservice.database.Exam;
 import com.example.examservice.database.Question;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
@@ -32,9 +30,6 @@ public class AddQuestion extends AppCompatActivity {
     public static int examId ;
     public static int questionId ;
     int maxAnswers ;
-    String fileName;
-    FirebaseStorage storage ;
-    StorageReference storageRef ;
     private static final int NEW_ANSWER_REQUEST_CODE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +53,6 @@ public class AddQuestion extends AppCompatActivity {
         exam = AllExamsList.currentExam;
         examId = exam.getExam_id();
 
-        storage = FirebaseStorage.getInstance();
-        storageRef = storage.getReference();
     }
 
     public void addNewAnswer(View view) {

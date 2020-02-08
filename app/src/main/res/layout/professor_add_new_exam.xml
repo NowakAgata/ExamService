@@ -22,20 +22,25 @@
                 android:id="@+id/tv_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add new exam"
-                android:textSize="30sp"
-                android:textColor="@color/white"
+                android:text="@string/admin_add_exam_exp"
+                android:textSize="22sp"
+                android:gravity="center_horizontal"
+                android:textColor="@color/black"
                 android:fontFamily="sans-serif-medium"
                 android:layout_marginTop="20dp"
                 />
+
+            <ScrollView
+                android:id="@+id/scroll_view"
+                android:layout_width="match_parent"
+                android:layout_height="450dp"
+                android:layout_below="@+id/tv_register">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_register"
                 android:orientation="vertical">
-
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -46,9 +51,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="Name"
+                        android:text="@string/name"
                         android:textAllCaps="true"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="15sp"
                         />
                     <EditText
@@ -77,9 +82,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="Info"
+                        android:text="@string/info"
                         android:textAllCaps="true"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="15sp"
                         />
                     <EditText
@@ -93,9 +98,7 @@
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp"
                         android:fontFamily="sans-serif-light"
-
                         />
-
 
                 </LinearLayout>
 
@@ -108,9 +111,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="available from (yyyy-MM-dd)"
+                        android:text="@string/available_from"
                         android:textAllCaps="true"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="15sp"
                         />
                     <EditText
@@ -139,9 +142,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="available to (yyyy-MM-dd)"
+                        android:text="@string/available_to"
                         android:textAllCaps="true"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="15sp"
                         />
                     <EditText
@@ -170,9 +173,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="is learning required?"
+                        android:text="@string/requires_learning"
                         android:textAllCaps="true"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="15sp"
                         />
                     <Spinner
@@ -183,6 +186,7 @@
 
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -192,9 +196,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="duration time (minutes)"
+                        android:text="@string/duration_time"
                         android:textAllCaps="true"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="15sp"
                         />
                     <EditText
@@ -223,9 +227,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="Maximum number of attempts"
+                        android:text="@string/attempts"
                         android:textAllCaps="true"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="15sp"
                         />
                     <EditText
@@ -254,9 +258,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="maximum number of questions"
+                        android:text="@string/questions"
                         android:textAllCaps="true"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="15sp"
                         />
                     <EditText
@@ -285,9 +289,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-light"
-                        android:text="% to pass"
+                        android:text="@string/percentage"
                         android:textAllCaps="true"
-                        android:textColor="@color/white"
+                        android:textColor="@color/black"
                         android:textSize="15sp"
                         />
                     <EditText
@@ -313,25 +317,29 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/butRegister"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_weight="1"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginEnd="40dp"
-                        android:text="ADD"
-                        android:textSize="15sp"
-                        android:textColor="@color/black"
-                        android:background="@drawable/button_filled_bg"
-                        android:onClick="addNewExam"
-                        />
+
 
 
                 </LinearLayout>
             </LinearLayout>
 
+            </ScrollView>
+
+            <Button
+                android:id="@+id/butRegister"
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                android:layout_below="@+id/scroll_view"
+                android:layout_marginStart="100dp"
+                android:layout_marginEnd="100dp"
+                android:layout_marginTop="40dp"
+                android:text="@string/add"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:background="@drawable/button_filled_bg"
+                android:onClick="addNewExam"
+                />
 
         </RelativeLayout>
 

@@ -23,18 +23,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:textSize="32sp"
+                android:textSize="22sp"
                 android:textStyle="bold"
                 android:text="exam name"
                 android:inputType="text"
-                android:gravity="center" />
+                android:gravity="center"
+                />
 
             <EditText
                 android:id="@+id/adminExamInfoEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:textSize="24sp"
+                android:textSize="22sp"
                 android:inputType="text"
                 android:text="exam info"
                 android:gravity="center" />
@@ -54,7 +55,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="available from:"
+                android:text="@string/available_from"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
             <EditText
@@ -62,10 +63,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:inputType="date"
                 android:text="date"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
 
 
         </LinearLayout>
@@ -81,7 +82,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="to:"
+                android:text="@string/available_to"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
             <EditText
@@ -89,10 +90,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:inputType="date"
                 android:text="date"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
 
 
         </LinearLayout>
@@ -109,13 +110,13 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="learning required:"
+                android:text="@string/requires_learning"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
             <Spinner
                 android:id="@+id/adminExamIsLearningReqEditEspinner"
                 android:layout_width="0dp"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"/>
 
@@ -133,7 +134,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="duration:"
+                android:text="@string/duration_time"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
             <EditText
@@ -141,10 +142,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:text="time"
                 android:inputType="number"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
 
 
         </LinearLayout>
@@ -160,7 +161,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="max attempts:"
+                android:text="@string/attempts"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
             <EditText
@@ -168,10 +169,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:inputType="number"
                 android:text="int"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
 
 
         </LinearLayout>
@@ -185,7 +186,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="max questions:"
+                android:text="@string/questions"
                 android:gravity="center_vertical"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
@@ -194,10 +195,10 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:text="int"
                 android:inputType="number"
-                android:textSize="20sp"/>
+                android:textSize="18sp"/>
 
 
         </LinearLayout>
@@ -208,7 +209,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_gravity="center"
-            android:text="OK"
+            android:text="@string/ok"
             android:onClick="ok"
             android:background="@drawable/button_filled_bg"/>
 

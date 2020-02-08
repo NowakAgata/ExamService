@@ -26,7 +26,7 @@ import java.util.ArrayList;
 public class AllUserExamList extends AppCompatActivity {
 
     private static final int ADD_USER_REQUEST_CODE =1 ;
-    private String TAG = " TAGAllUserExam" ;
+    private String TAG = "TAGAllUserExam" ;
     RecyclerView recyclerView;
     AllUsersAdapter usersAdapter ;
     RecyclerView.LayoutManager layoutManager;
@@ -34,14 +34,14 @@ public class AllUserExamList extends AppCompatActivity {
     ArrayList<User> usersList ;
     ArrayList<UserExam> userExamsList ;
     DatabaseReference usersRef ;
-    Exam exam ;
-
+    //Exam exam ;
+    int examId ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_all_user_exam_list);
 
-        exam = AllExamsList.currentExam;
+        examId = getIntent().getIntExtra("EXAM_ID", 0);
 
         allUsersList = ApplicationClass.allStudentsList;
 
@@ -59,24 +59,24 @@ public class AllUserExamList extends AppCompatActivity {
 
         usersRef = ApplicationClass.mDatabase.getReference().child("UserExam") ;
 
-
     }
 
     private void getList() {
         userExamsList = ExamAdministration.userExamsList;
         usersList.clear();
-        int examId = exam.getExam_id() ;
+
         for(UserExam userExam : userExamsList){
             if(userExam.getExam_id() == examId){
                 User user = getUser(userExam.getUser_id());
                 if(user != null){
                     usersList.add(user);
+                    Log.d(TAG, "getList:" + user.toString());
                 }
             }
         }
     }
 
-    private User getUser(int userId) {
+    private User  getUser(int userId) {
 
         for(User user : allUsersList){
             if(user.getId() == userId){
@@ -93,8 +93,9 @@ public class AllUserExamList extends AppCompatActivity {
         int userId = user.getId();
         UserExam userExam = getUserExam(userId);
         if(userExam != null){
-            Log.d(TAG, userExam.toString());
+            Log.d(TAG,"trying to delete:" +  userExam.toString());
             String id = Integer.toString(userExam.getUser_exam_id());
+            Log.d(TAG, "with id: " + id);
             usersRef.child(id).removeValue().addOnCompleteListener(
                     new OnCompleteListener<Void>() {
                         @Override
@@ -104,7 +105,12 @@ public class AllUserExamList extends AppCompatActivity {
                             usersAdapter.notifyDataSetChanged();
                         }
                     }
-            );
+            ).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.d(TAG, "Coś poszło nie tak") ;
+                        }
+            });
         }else{
             Log.d(TAG, "Something went wrong");
         }
@@ -118,7 +124,7 @@ public class AllUserExamList extends AppCompatActivity {
     private UserExam getUserExam(int userId) {
 
         for(UserExam userExam : userExamsList){
-            if(userExam.getUser_id() == userId){
+            if((userExam.getUser_id() == userId) && (userExam.getExam_id() == examId)){
                 return userExam;
             }
         }
@@ -126,9 +132,8 @@ public class AllUserExamList extends AppCompatActivity {
     }
 
     public void addNewUser(View view) {
-        Intent intent = new Intent(getApplicationContext(), AllUsersListActivity.class);
-        intent.putExtra("ADD_USER", true);
-        intent.putExtra("EXAM_ID", exam.getExam_id());
+        Intent intent = new Intent(getApplicationContext(), AddNewUserExam.class);
+        intent.putExtra("EXAM_ID", examId);
         startActivityForResult(intent, ADD_USER_REQUEST_CODE);
     }
 
@@ -136,6 +141,7 @@ public class AllUserExamList extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == ADD_USER_REQUEST_CODE && resultCode == 300){
+            Log.d(TAG, "Wróciło");
             getList();
             usersAdapter.notifyDataSetChanged();
         }

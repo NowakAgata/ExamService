@@ -28,12 +28,13 @@ public class Exam {
 
     private ArrayList<Result> resultsList ;
     private ArrayList<Question> questionsList ;
-
+    private boolean has_questions ;
 
     public Exam(){
 
         resultsList = new ArrayList<>();
         questionsList = new ArrayList<>();
+        has_questions = false;
     }
 
     public Exam( int exam_id, String name, String additional_information, boolean learning_required, int created_by,
@@ -52,6 +53,7 @@ public class Exam {
         this.percentage_passed_exam = percentage_passed_exam ;
         resultsList = new ArrayList<>();
         questionsList = new ArrayList<>();
+        has_questions = false;
 
     }
 
@@ -174,6 +176,14 @@ public class Exam {
 
     public void setExam_resolved(Date exam_resolved) {
         this.exam_resolved = exam_resolved;
+    }
+
+    public boolean isHas_questions() {
+        return has_questions;
+    }
+
+    public void setHas_questions(boolean has_questions) {
+        this.has_questions = has_questions;
     }
 
     @Override

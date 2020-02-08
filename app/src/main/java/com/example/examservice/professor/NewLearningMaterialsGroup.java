@@ -64,7 +64,6 @@ public class NewLearningMaterialsGroup extends AppCompatActivity {
             if(requestCode == ADD_MATERIAL_REQUEST_CODE){
                 if(resultCode == RESULT_OK){
                     materialsLittleAdapter.notifyDataSetChanged();
-                    //TODO iteracja po liście materiałów i zmienić id materiału i grupy
                 } else{
                     Toast.makeText(getApplicationContext(), R.string.somethingWrong, Toast.LENGTH_SHORT).show();
                 }

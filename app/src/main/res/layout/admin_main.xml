@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -28,7 +27,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
                     android:text="Hello Admin!"
-                    android:textColor="@color/light_button_background"
+                    android:textColor="@color/black"
                     android:gravity="center"
                     android:textSize="48sp"/>
 
@@ -36,10 +35,10 @@
                     android:layout_width  ="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
-                    android:text="What do you want to do?"
-                    android:textColor="@color/light_button_background"
+                    android:text="@string/main_admin"
+                    android:textColor="@color/black"
                     android:gravity="center"
-                    android:textSize="32sp"/>
+                    android:textSize="22sp"/>
 
             </LinearLayout>
 
@@ -47,7 +46,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
-                android:layout_marginTop="48dp"
                 android:orientation="vertical">
 
                 <Button
@@ -57,7 +55,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="8dp"
                     android:background="@drawable/button_filled_with_color_bg"
-                    android:text="user"
+                    android:text="@string/users"
                     android:onClick="usersMode"/>
 
                 <Button
@@ -68,7 +66,7 @@
                     android:layout_margin="8dp"
                     android:layout_marginTop="48dp"
                     android:background="@drawable/button_filled_with_color_bg"
-                    android:text="exam"
+                    android:text="@string/exams"
                     android:onClick="examsMode"/>
 
                 <Button
@@ -79,7 +77,7 @@
                     android:layout_margin="8dp"
                     android:layout_marginTop="48dp"
                     android:background="@drawable/button_filled_with_color_bg"
-                    android:text="files"
+                    android:text="@string/files"
                     android:onClick="filesMode"/>
 
                 <Button
@@ -90,7 +88,7 @@
                     android:layout_margin="8dp"
                     android:layout_marginTop="48dp"
                     android:background="@drawable/button_filled_with_color_bg"
-                    android:text="my profile"
+                    android:text="@string/profile_view"
                     android:onClick="editProfile"/>
 
             </LinearLayout>

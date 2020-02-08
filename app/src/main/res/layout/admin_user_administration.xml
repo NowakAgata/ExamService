@@ -17,52 +17,59 @@
             android:layout_marginBottom="32dp"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:gravity="center"
+                android:text="@string/user_administration_exp"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="70dp"
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
                 android:background="@drawable/button_filled_with_color_bg"
-                android:text="all professors list"
+                android:text="@string/professors_list"
                 android:onClick="allProfessors"/>
 
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="70dp"
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
                 android:layout_marginTop="48dp"
                 android:background="@drawable/button_filled_with_color_bg"
-                android:text="all students list"
+                android:text="@string/students_list"
                 android:onClick="allStudents"/>
 
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="70dp"
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
                 android:layout_marginTop="48dp"
                 android:background="@drawable/button_filled_with_color_bg"
-                android:text="all admins list"
+                android:text="@string/admins_list"
                 android:onClick="allAdmins"/>
 
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="70dp"
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
                 android:layout_marginTop="48dp"
                 android:background="@drawable/button_filled_with_color_bg"
-                android:text="all users list"
+                android:text="@string/users_list"
                 android:onClick="allUsers"/>
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
+                android:layout_height="70dp"
                 android:layout_gravity="center"
                 android:layout_margin="8dp"
                 android:layout_marginTop="48dp"
                 android:background="@drawable/button_filled_with_color_bg"
-                android:text="add new user"
+                android:text="@string/add_new_user"
                 android:onClick="addNewUserButton"/>
 
         </LinearLayout>

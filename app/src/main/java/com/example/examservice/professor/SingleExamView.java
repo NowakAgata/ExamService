@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,8 +51,8 @@ public class SingleExamView extends AppCompatActivity {
         attempts = exam.getMax_attempts();
         questions = exam.getMax_questions();
 
-        availableStr = "from: " + from.getDate().toString().substring(0,10) + ", to: " + to.getDate().toString().substring(0,10);
-        learningStr = isLearning ? "yes" : "no" ;
+        availableStr = "od: " + from.getDate().toString().substring(0,10) + ", do: " + to.getDate().toString().substring(0,10);
+        learningStr = isLearning ? "tak" : "ni" ;
         durationStr = duration + " minute(s)" ;
         attemptsStr = Integer.toString(attempts);
         questionsStr = Integer.toString(questions);

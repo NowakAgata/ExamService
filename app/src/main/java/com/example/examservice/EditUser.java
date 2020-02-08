@@ -10,9 +10,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.examservice.database.Date;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 
@@ -72,8 +73,9 @@ public class EditUser extends AppCompatActivity {
             isChanged = true;
         }if(!fisrtPass.isEmpty()){
             Log.d(TAG, "editing use'r password");
+            Date date = new Date();
+            userRef.child(userId).child("last_password_change").setValue(date);
             FirebaseUser firebaseUser = ApplicationClass.mAuth.getCurrentUser();
-
             firebaseUser.updatePassword(fisrtPass)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -82,11 +84,15 @@ public class EditUser extends AppCompatActivity {
                                 Log.d(TAG, "User password updated.");
                             }
                         }
-                    });
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.d(TAG, "User password not updated.");
+                            e.printStackTrace();
+                        }
+            });
 
         }
-
-
         if(isChanged){
             editor.apply();
             setResult(RESULT_OK);
@@ -110,5 +116,8 @@ public class EditUser extends AppCompatActivity {
             return false;
         }
         return true ;
+    }
+
+    public void confirmEdit(View view) {
     }
 }

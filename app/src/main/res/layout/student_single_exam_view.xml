@@ -23,9 +23,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:textSize="32sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
-                android:text="exam name"
+                android:text="@string/name"
                 android:gravity="center" />
 
             <TextView
@@ -33,8 +33,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:textSize="24sp"
-                android:text="exam info"
+                android:textSize="22sp"
+                android:text="@string/info"
                 android:gravity="center" />
 
         </LinearLayout>
@@ -45,20 +45,20 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="available to:"
+                android:text="@string/available_to"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
             <TextView
                 android:id="@+id/studentExamAvailableFrom"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center"
                 android:layout_weight="2"
                 android:text="date"
@@ -71,20 +71,20 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="learning required:"
+                android:text="@string/requires_learning"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
             <TextView
                 android:id="@+id/studentExamIsLearningReq"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center"
                 android:layout_weight="2"
                 android:text="bool"
@@ -97,20 +97,20 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="duration:"
+                android:text="@string/duration_time"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
             <TextView
                 android:id="@+id/studentExamDurationTime"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center"
                 android:layout_weight="2"
                 android:text="time"
@@ -123,20 +123,20 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="attempts left:"
+                android:text="@string/attempts_left"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
             <TextView
                 android:id="@+id/studentExamAttemptsLeft"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center"
                 android:layout_weight="2"
                 android:text="int"
@@ -148,20 +148,20 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="questions:"
+                android:text="@string/questions_left"
                 android:gravity="center_vertical"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
             <TextView
                 android:id="@+id/studentexamQuestions"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center"
                 android:layout_weight="2"
                 android:text="int"
@@ -181,7 +181,7 @@
                 android:layout_margin="8dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_trans_bg"
-                android:text="see materials"
+                android:text="@string/see_materials"
                 android:layout_gravity="center"
                 android:onClick="showMaterials"/>
 
@@ -190,7 +190,7 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:text="start"
+                android:text="@string/start"
                 android:layout_gravity="center"
                 android:onClick="onStartExamClick"/>
 

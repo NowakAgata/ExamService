@@ -45,20 +45,20 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="available:"
+                android:text="@string/available"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
             <TextView
                 android:id="@+id/adminExamAvailableFrom"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center"
                 android:layout_weight="2"
                 android:text="date"
@@ -71,20 +71,20 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="learning required:"
+                android:text="@string/requires_learning"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
             <TextView
                 android:id="@+id/adminExamIsLearningReq"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center"
                 android:layout_weight="2"
                 android:text="bool"
@@ -97,20 +97,20 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="duration:"
+                android:text="@string/duration_time"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
             <TextView
                 android:id="@+id/adminExamDurationTime"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center"
                 android:layout_weight="2"
                 android:text="time"
@@ -123,20 +123,20 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center_vertical"
                 android:layout_weight="1"
-                android:text="max attempts:"
+                android:text="@string/attempts"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
             <TextView
                 android:id="@+id/adminExamMaxAttempts"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center"
                 android:layout_weight="2"
                 android:text="int"
@@ -148,20 +148,20 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="max questions:"
+                android:text="@string/questions"
                 android:gravity="center_vertical"
                 android:textStyle="bold"
                 android:textSize="20sp"/>
             <TextView
                 android:id="@+id/adminExamMaxQuestions"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:gravity="center"
                 android:layout_weight="2"
                 android:text="int"
@@ -184,7 +184,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="edit"
+                android:text="@string/edit"
                 android:onClick="editButton"/>
 
             <Button
@@ -194,7 +194,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:text="delete"
+                android:text="@string/delete"
                 android:onClick="deleteButton"/>
 
         </LinearLayout>

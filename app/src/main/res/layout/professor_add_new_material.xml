@@ -16,8 +16,8 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Add new material to group."
+            android:layout_weight="2"
+            android:text="@string/add_new_material"
             android:textStyle="bold"
             android:textSize="26sp"
             android:gravity="center_vertical"/>
@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="Enter name of file that students will see:"
+            android:text="@string/name_of_file"
             android:textStyle="bold"
             android:textSize="22sp"
             android:gravity="center_vertical"/>
@@ -35,13 +35,14 @@
             android:id="@+id/newMaterialNameEditText"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:background="@drawable/et_bg"
             android:layout_weight="1" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:text="Is this required to see before exam?"
+            android:text="@string/is_required_question"
             android:textStyle="bold"
             android:textSize="22sp"
             android:gravity="center_vertical"/>
@@ -57,25 +58,9 @@
             android:layout_height="0dp"
             android:layout_margin="16dp"
             android:layout_weight="1"
-            android:text="ADD PHOTO"
+            android:text="@string/add_photo"
             android:onClick="addPhoto"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_margin="16dp"
-            android:text="ADD DOCUMENT"
-            android:onClick="addDocument"/>
-
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_margin="16dp"
-            android:text="listFiles"
-            android:onClick="listFiles"/>
 
     </LinearLayout>
 

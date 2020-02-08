@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.examservice.admin.MainAdminActivity;
+import com.example.examservice.database.Date;
 import com.example.examservice.database.User;
 import com.example.examservice.professor.MainProfessorActivity;
 import com.example.examservice.student.MainStudentActivity;
@@ -89,9 +90,10 @@ public class LoginActivity extends AppCompatActivity {
         }else if(role.equals(ApplicationClass.STUDENT_ROLE)){
             Intent intent = new Intent(getApplicationContext(), MainStudentActivity.class);
             startActivityForResult(intent, ROLE_ACTIVITY_REQUEST_CODE);
-
         }else if(role.equals(ApplicationClass.ADMIN_ROLE)){
             Intent intent = new Intent(getApplicationContext(), MainAdminActivity.class);
+//            intent.putExtra("ADMIN_PASS", password);
+//            intent.putExtra("ADMIN_EMAIL", email);
             startActivityForResult(intent, ROLE_ACTIVITY_REQUEST_CODE);
 
         }
@@ -110,7 +112,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void  updateCurrentUser() {
-
 
         User user = null;
         for(User temp : userArrayList){
@@ -132,15 +133,28 @@ public class LoginActivity extends AppCompatActivity {
             editor.putString(ApplicationClass.SHARED_PREFERENCES_FIRST_NAME_KEY, name);
             editor.putString(ApplicationClass.SHARED_PREFERENCES_LAST_NAME_KEY, surname);
             editor.putString(ApplicationClass.SHARED_PREFERENCES_EMAIL_KEY, email);
+            editor.putString(ApplicationClass.SHARED_PREFERENCES_PASSWORD_KEY, password);
             editor.putString(ApplicationClass.SHARED_PREFERENCES_ROLE_KEY, role);
             editor.putInt(ApplicationClass.SHARED_PREFERENCES_ID_KEY, id);
             editor.apply();
+
+            Date date = new Date();
+            String userId = Integer.toString(id);
+            DatabaseReference tempRef = ApplicationClass.mDatabase.getReference().child("User");
+            tempRef.child(userId).child("last_login").setValue(date);
         }
         else{
             Log.d(TAG, "User in null!!!!!");
             Toast.makeText(getApplicationContext(), R.string.somethingWrong, Toast.LENGTH_SHORT).show();
         }
     }
+
+    public void forgotPassword(View view) {
+        Intent intent = new Intent(getApplicationContext(), PasswordReset.class);
+        startActivity(intent);
+
+    }
+
 
 //    @Override
 //    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

@@ -31,7 +31,6 @@ public class AllQuestionsList extends AppCompatActivity {
     private static final int ADD_NEW_QUESTION_REQUEST = 1;
     private final String TAG = "TAGAllQuestions" ;
     Exam exam ;
-    public static Question currentQuestion;
     String examId, questionId ;
     ArrayList<Question> questionsList ;
     public static int questionsCount ;

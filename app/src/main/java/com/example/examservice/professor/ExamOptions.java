@@ -8,13 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.examservice.ApplicationClass;
 import com.example.examservice.R;
 import com.example.examservice.database.Exam;
-import com.example.examservice.database.LearningMaterialsGroup;
 import com.example.examservice.database.LearningMaterialsGroupExam;
 import com.example.examservice.database.Question;
 import com.example.examservice.database.UserExam;
@@ -33,7 +31,6 @@ public class ExamOptions extends AppCompatActivity {
 
     private static final int ADD_GROUP_TO_EXAM_REQUEST_CODE = 5;
     public Exam exam ;
-    TextView tvName, tvInfo ;
 
     private static final String TAG = "TAGExamOptions";
     private static final int SINGLE_EXAM_VIEW_REQUEST_CODE = 1;
@@ -42,12 +39,12 @@ public class ExamOptions extends AppCompatActivity {
     private static final int ADD_STUDENT_TO_EXAM_REQUEST_CODE = 4;
 
     public static ArrayList<Question> questionsList ;
-    private DatabaseReference questionsRef ;
+    DatabaseReference questionsRef ;
     public static int questionsCount ;
     public static int qroupExamCount ;
-    private DatabaseReference examRef ;
-    private DatabaseReference userExamRef ;
-    private DatabaseReference groupExamRef ;
+    DatabaseReference examRef ;
+    DatabaseReference userExamRef ;
+    DatabaseReference groupExamRef ;
     ArrayList<UserExam> userExamList ;
     public static ArrayList<LearningMaterialsGroupExam> groupExamList ;
     public static HashSet<Integer> userIdsArray ;
@@ -59,8 +56,6 @@ public class ExamOptions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.professor_exam_options);
 
-        tvName = findViewById(R.id.professorExamNameTxt);
-        tvInfo = findViewById(R.id.professorExamInfoTxt);
 
         userExamList = new ArrayList<>();
         questionsList = new ArrayList<>();
@@ -69,8 +64,6 @@ public class ExamOptions extends AppCompatActivity {
         exam = AllExamsList.currentExam ;
         qroupExamCount =0 ;
 
-        tvName.setText(exam.getName());
-        tvInfo.setText(exam.getAdditional_information());
 
         String examIdString = Integer.toString(exam.getExam_id());
 
