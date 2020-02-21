@@ -42,7 +42,7 @@ public class AllMaterialsList extends AppCompatActivity {
     public static int materialsCounter ;
     DatabaseReference materialsRef ;
     MyFTPClient ftpClient ;
-    boolean showFiles ;
+    //boolean showFiles ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class AllMaterialsList extends AppCompatActivity {
         setContentView(R.layout.professor_all_materials_list);
 
         ftpClient = ApplicationClass.ftpclient;
-        showFiles = getIntent().getBooleanExtra("SHOW_FILES", false);
+        //showFiles = getIntent().getBooleanExtra("SHOW_FILES", false);
 
         group = AllMaterialsGroup.chosenGroup;
         String groupId = Integer.toString(group.getLearning_materials_group_id());
@@ -91,7 +91,7 @@ public class AllMaterialsList extends AppCompatActivity {
     }
 
     public void onMaterialDeleteClick(View view) {
-        if(showFiles) return ;
+        //if(showFiles) return ;
 
         int index = (int) view.getTag();
         String groupId = Integer.toString(group.getLearning_materials_group_id());
@@ -139,7 +139,7 @@ public class AllMaterialsList extends AppCompatActivity {
     }
 
     public void onMaterialEditClick(View view) {
-        if(showFiles) return ;
+        //if(showFiles) return ;
         int index = (int) view.getTag();
         chosenMaterial = materialsList.get(index) ;
         Intent intent = new Intent(getApplicationContext(), EditMaterial.class);
@@ -149,23 +149,23 @@ public class AllMaterialsList extends AppCompatActivity {
 
     public void deleteGroup(View view) {
 
-        if(showFiles){
-            int groupId = group.getLearning_materials_group_id();
-            int examId = AllExamsList.currentExam.getExam_id();
-            for(final LearningMaterialsGroupExam groupExam : ExamOptions.groupExamList){
-                if(groupExam.getExam_id() == examId && groupExam.getLearning_materials_group_id() == groupId){
-                    String id = Integer.toString(groupExam.getId());
-                    DatabaseReference temp = ApplicationClass.mDatabase.getReference().child("LearningMaterialsGroupExam");
-                    temp.child(id).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            Log.d(TAG, "deleted groupExam: " + groupExam);
-                            materialsAdapter.notifyDataSetChanged();
-                        }
-                    });
-                }
-            }
-        }else {
+//        if(showFiles){
+//            int groupId = group.getLearning_materials_group_id();
+//            int examId = AllExamsList.currentExam.getExam_id();
+//            for(final LearningMaterialsGroupExam groupExam : ExamOptions.groupExamList){
+//                if(groupExam.getExam_id() == examId && groupExam.getLearning_materials_group_id() == groupId){
+//                    String id = Integer.toString(groupExam.getId());
+//                    DatabaseReference temp = ApplicationClass.mDatabase.getReference().child("LearningMaterialsGroupExam");
+//                    temp.child(id).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<Void> task) {
+//                            Log.d(TAG, "deleted groupExam: " + groupExam);
+//                            materialsAdapter.notifyDataSetChanged();
+//                        }
+//                    });
+//                }
+//            }
+//        }else {
             if (materialsList.size() > 0) {
                 Toast.makeText(getApplicationContext(), "You have to delete all materials first.", Toast.LENGTH_SHORT).show();
                 return;
@@ -176,7 +176,7 @@ public class AllMaterialsList extends AppCompatActivity {
             ref.removeValue();
             setResult(RESULT_OK);
             finish();
-        }
+ //       }
     }
 
 

@@ -136,8 +136,8 @@ public class AddNewExam extends AppCompatActivity {
             format.parse(date);
             return true ;
         } catch (ParseException e) {
-            Log.d(TAG, "Date " + date + " is not valid according to " +
-                    ((SimpleDateFormat) format).toPattern() + " pattern.");
+            Log.d(TAG, "Data " + date + " nie jest poprawna według wzorca: " +
+                    ((SimpleDateFormat) format).toPattern());
             return false;
         }
     }
@@ -150,7 +150,7 @@ public class AddNewExam extends AppCompatActivity {
                     return true;
             }
         } catch(Exception e){
-            Log.d(TAG, "Text " + text +" is not a valid number");
+            Log.d(TAG, "Wartość: " + text +" to nie liczba większa od zera.");
             return false;
         }
         return false;

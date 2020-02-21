@@ -97,8 +97,7 @@ public class AllMaterialsGroup extends AppCompatActivity {
             setResult(RESULT_OK);
             finish();
         }else if(showFiles){
-            Intent intent = new Intent(getApplicationContext(), AllMaterialsList.class);
-            intent.putExtra("SHOW_FILES", true) ;
+            Intent intent = new Intent(getApplicationContext(), AllMaterialsShowList.class);
             startActivityForResult(intent, SEE_MATERIALS_REQUEST_CODE);
         } else {
             Intent intent = new Intent(getApplicationContext(), AllMaterialsList.class);

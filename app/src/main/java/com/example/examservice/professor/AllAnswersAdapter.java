@@ -52,7 +52,7 @@ public class AllAnswersAdapter extends RecyclerView.Adapter<AllAnswersAdapter.Vi
         holder.delete.setTag(position);
 
         Answer temp = answers.get(position) ;
-        String is = temp.getIs_true() ? "yes" : "no" ;
+        String is = temp.getIs_true() ? "tak" : "nie" ;
         holder.answer.setText(temp.getContent());
         holder.correct.setText(is);
 

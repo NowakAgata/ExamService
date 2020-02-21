@@ -48,7 +48,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:text="@string/answers"
-                android:textSize="18sp" />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/singleQuestionCorrectTxtView"

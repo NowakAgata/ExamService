@@ -51,9 +51,10 @@ public class SingleExamView extends AppCompatActivity {
         attempts = exam.getMax_attempts();
         questions = exam.getMax_questions();
 
-        availableStr = "od: " + from.getDate().toString().substring(0,10) + ", do: " + to.getDate().toString().substring(0,10);
-        learningStr = isLearning ? "tak" : "ni" ;
-        durationStr = duration + " minute(s)" ;
+        availableStr = "od: " + from.getDate().toString().substring(0,10)
+                + ", do: " + to.getDate().toString().substring(0,10);
+        learningStr = isLearning ? "tak" : "nie" ;
+        durationStr = duration + " minut" ;
         attemptsStr = Integer.toString(attempts);
         questionsStr = Integer.toString(questions);
 

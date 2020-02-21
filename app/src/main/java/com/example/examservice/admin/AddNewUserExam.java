@@ -61,17 +61,17 @@ public class AddNewUserExam extends AppCompatActivity {
         int i = (int) view.getTag();
         chosenUser = allUsersList.get(i);
 
-            int userExamId = ExamAdministration.userExamsCount ;
-            userExamId ++ ;
-            String id = Integer.toString(userExamId);
-            UserExam userExam = new UserExam(examId, userExamId, chosenUser.getId());
-            Log.d(TAG, "Adding userExam : " + userExam.toString());
+        int userExamId = ExamAdministration.userExamsCount ;
+        userExamId ++ ;
+        String id = Integer.toString(userExamId);
+        UserExam userExam = new UserExam(examId, userExamId, chosenUser.getId());
+        Log.d(TAG, "Adding userExam : " + userExam.toString());
 
-            userExamRef = ApplicationClass.mDatabase.getReference().child("UserExam").child(id);
-            userExamRef.setValue(userExam) ;
+        userExamRef = ApplicationClass.mDatabase.getReference().child("UserExam").child(id);
+        userExamRef.setValue(userExam) ;
 
-            setResult(300);
-            finish();
+        setResult(300);
+        finish();
     }
 
     @Override

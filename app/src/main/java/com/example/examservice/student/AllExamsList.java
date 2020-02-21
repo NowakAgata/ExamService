@@ -58,7 +58,7 @@ public class AllExamsList extends AppCompatActivity {
         examsList.clear();
         if(startExam){
             for(Exam exam : allExamsList){
-                if(exam.isAvailable() && exam.isHas_questions()){
+                if(exam.isAvailable(6) && exam.isHas_questions()){
                     Log.d(TAG, "Dodano: " +exam.toString());
                     examsList.add(exam);
                 }

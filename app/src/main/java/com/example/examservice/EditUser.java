@@ -72,7 +72,7 @@ public class EditUser extends AppCompatActivity {
             editor.putString(ApplicationClass.SHARED_PREFERENCES_LAST_NAME_KEY, newLastName);
             isChanged = true;
         }if(!fisrtPass.isEmpty()){
-            Log.d(TAG, "editing use'r password");
+            Log.d(TAG, "editing user's password");
             Date date = new Date();
             userRef.child(userId).child("last_password_change").setValue(date);
             FirebaseUser firebaseUser = ApplicationClass.mAuth.getCurrentUser();

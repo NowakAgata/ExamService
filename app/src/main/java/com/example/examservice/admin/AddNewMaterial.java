@@ -73,25 +73,24 @@ public class AddNewMaterial extends AppCompatActivity {
     public void addPhoto(View view) {
         name= etName.getText().toString();
         if(name.isEmpty()){
-            Toast.makeText(getApplicationContext(), "Please enter file name first!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "W pierwszej kolejności wpisz nazwę materiału!"
+                    , Toast.LENGTH_SHORT).show();
             return ;
         }
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         startActivityForResult(intent, 1000);
-
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1000) {
             if (resultCode == RESULT_OK) {
-
                 Uri selectedImage = data.getData();
                 if (selectedImage != null) {
                     String[] filePathColumn = {MediaStore.Images.Media.DATA};
-                    Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+                    Cursor cursor = getContentResolver().query(selectedImage, filePathColumn,
+                            null, null, null);
                     cursor.moveToFirst();
                     int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                     String imgDecodableString = cursor.getString(columnIndex);
@@ -99,7 +98,6 @@ public class AddNewMaterial extends AppCompatActivity {
                     Log.d(TAG, "path: " + imgDecodableString);
                     String fileName = ftpclient.ftpUpload(imgDecodableString);
                     addMaterial(fileName);
-
                 }
 
             }

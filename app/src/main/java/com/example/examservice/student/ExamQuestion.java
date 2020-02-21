@@ -213,17 +213,17 @@ public class ExamQuestion extends AppCompatActivity {
         Log.d(TAG, "counter= " + counter) ;
         if(counter == 0){
             sortAnswers();
-            for(Question question : questionsList){
-                Log.d(TAG, question.toString());
-            }
             counter++ ;
+            if(counter == questions){
+                button.setText("ZAKOŃCZ");
+            }
             updateTextVies();
             startTimer();
         }else{
             if((counter+1) == questions){
                 button.setText(R.string.finish);
             }
-            //counter++;
+            button.setText("DALEJ");
             if(givePoint()) {
                 Log.d(TAG, "jest punkt");
                 points++ ;

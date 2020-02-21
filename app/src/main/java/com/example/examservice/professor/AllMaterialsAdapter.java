@@ -54,7 +54,7 @@ public class AllMaterialsAdapter extends RecyclerView.Adapter<AllMaterialsAdapte
 
         LearningMaterial temp = materials.get(position);
 
-        String is = temp.isIs_required() ? "yes" : "no" ;
+        String is = temp.isIs_required() ? "tak" : "nie" ;
         holder.name.setText(temp.getName());
         holder.required.setText(is);
 

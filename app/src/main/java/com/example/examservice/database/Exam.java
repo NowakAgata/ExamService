@@ -23,6 +23,7 @@ public class Exam {
     private String name;
     private Date start_date;
     private int percentage_passed_exam;
+
     private int userExamId ;
     private Date exam_resolved ;
 
@@ -206,7 +207,7 @@ public class Exam {
                 '}';
     }
 
-    public boolean isAvailable(){
+    public boolean isAvailable(int i){
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Calendar calendar = new GregorianCalendar();

@@ -109,5 +109,12 @@
     <string name="finish">ZAKOŃCZ</string>
     <string name="points">Punkty:</string>
     <string name="is_passed">Zdane:</string>
+    <string name="manage_questions">Zarządzaj pytaniami egzaminu</string>
+    <string name="manage_students">Zarządzaj studentami</string>
+    <string name="manage_files">Zarządzaj materiałami naukowymi</string>
+    <string name="manage_exams_expl">Jesteś w trybie zarządzania egzaminami. Wybierz opcję.</string>
+    <string name="is_correct">poprawna:</string>
+    <string name="delete_question">USUŃ PYTANIE</string>
+    <string name="delete_group">USUŃ GRUPĘ</string>
 
 </resources>

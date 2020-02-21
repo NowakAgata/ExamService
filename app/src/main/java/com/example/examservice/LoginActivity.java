@@ -92,8 +92,6 @@ public class LoginActivity extends AppCompatActivity {
             startActivityForResult(intent, ROLE_ACTIVITY_REQUEST_CODE);
         }else if(role.equals(ApplicationClass.ADMIN_ROLE)){
             Intent intent = new Intent(getApplicationContext(), MainAdminActivity.class);
-//            intent.putExtra("ADMIN_PASS", password);
-//            intent.putExtra("ADMIN_EMAIL", email);
             startActivityForResult(intent, ROLE_ACTIVITY_REQUEST_CODE);
 
         }
@@ -155,14 +153,4 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if(requestCode == ROLE_ACTIVITY_REQUEST_CODE){
-//            if(resultCode == 1000){
-//
-//            }
-//        }
-//    }
 }

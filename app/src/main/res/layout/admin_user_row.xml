@@ -13,7 +13,6 @@
     android:layout_height="wrap_content"
     android:onClick="onUserClick">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -82,8 +81,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@android:drawable/ic_menu_delete"
-                android:onClick="onUserExamDeleteClick" />
+                android:onClick="onUserDeleteClick" />
         </LinearLayout>
+
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

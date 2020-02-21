@@ -57,10 +57,7 @@ public class NewAnswer extends AppCompatActivity {
     }
 
     public void addNewAnswerToList(View view) {
-
         content = etContent.getText().toString();
-
-
         if(content.isEmpty()){
             Toast.makeText(getApplicationContext(), R.string.allFields, Toast.LENGTH_SHORT).show();
         } else{

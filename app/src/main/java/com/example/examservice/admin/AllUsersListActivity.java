@@ -53,7 +53,6 @@ public class AllUsersListActivity extends AppCompatActivity {
         recyclerView.setAdapter(usersAdapter);
 
         usersRef = ApplicationClass.mDatabase.getReference().child("User") ;
-
     }
 
     private void getList() {
@@ -88,15 +87,7 @@ public class AllUsersListActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == ADD_NEW_USER_REQUEST_CODE){
-            getList();
-        }
-    }
-
-    public void onUserExamDeleteClick(View view) {
+    public void onUserDeleteClick(View view) {
         int index = (int) view.getTag();
         User user = allUsersList.get(index);
         int userId = user.getId();
@@ -117,10 +108,20 @@ public class AllUsersListActivity extends AppCompatActivity {
                         usersAdapter.notifyDataSetChanged(); }
                 });
         }else{
-            Toast.makeText(getApplicationContext(), R.string.cant_delete, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),
+                    R.string.cant_delete, Toast.LENGTH_SHORT).show();
             return;
 
         }
 
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == ADD_NEW_USER_REQUEST_CODE){
+            getList();
+        }
+    }
+
 }

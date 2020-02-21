@@ -90,7 +90,7 @@ public class MainStudentActivity extends AppCompatActivity {
 
         allResultsList.clear();
         Log.d(TAG, "size: " + examsList.size());
-        for(i = 0; i < examsList.size()-1; i++) {
+        for(i = 0; i < examsList.size(); i++) {
             Log.d(TAG, "iteracja: " + i);
             Exam exam = examsList.get(i);
             Log.d(TAG, "current: "+exam.toString());

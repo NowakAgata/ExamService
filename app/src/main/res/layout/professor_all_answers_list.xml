@@ -22,7 +22,7 @@
         android:layout_weight="1"
         android:layout_gravity="center"
         android:layout_margin="16dp"
-        android:text="delete question"
+        android:text="@string/delete_question"
         android:background="@drawable/button_filled_bg"
         android:onClick="onDeleteQuestionClick"
         />

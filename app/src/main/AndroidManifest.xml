@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".admin.AddNewUserExam"></activity>
+        <activity android:name=".professor.AllMaterialsShowList"></activity>
+        <activity android:name=".admin.AddNewUserExam" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".PasswordReset" />
         <activity android:name=".student.AllMaterialsList" />

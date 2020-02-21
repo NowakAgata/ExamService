@@ -18,6 +18,7 @@ import com.example.examservice.R;
 import com.example.examservice.database.Date;
 import com.example.examservice.database.Exam;
 import com.google.android.material.datepicker.CalendarConstraints;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.annotations.NotNull;
 
 import java.text.DateFormat;
@@ -34,6 +35,7 @@ public class AddNewExam extends AppCompatActivity {
     String name, info, from, to, duration, attempts, questions, percent;
     Date fromDate, toDate;
     int durationInt, attemptsInt, questionsInt, percentageInt ;
+    DatabaseReference examRef ;
     boolean isLearning ;
     public static DateFormat format ;
     @Override
@@ -93,8 +95,8 @@ public class AddNewExam extends AppCompatActivity {
                 questionsInt,percentageInt, start, end) ;
 
         Log.d(TAG, "Adding new exam: " + name + " to database");
-
-        MainProfessorActivity.examRef.child(idString).setValue(exam);
+        examRef = ApplicationClass.mDatabase.getReference().child("Exam");
+        examRef.child(idString).setValue(exam);
         setResult(RESULT_OK);
         finish();
 

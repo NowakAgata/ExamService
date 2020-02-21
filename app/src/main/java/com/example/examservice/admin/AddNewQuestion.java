@@ -70,7 +70,7 @@ public class AddNewQuestion extends AppCompatActivity {
         maxAnswers = Integer.parseInt(maxAnswersStr);
 
         if(answerList.size() == 0){
-            Toast.makeText(getApplicationContext(), "Answer list is empty. ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Proszę dodać conajmniej jedną odpowiedź", Toast.LENGTH_SHORT).show();
         } else if(content.isEmpty()){
             Toast.makeText(getApplicationContext(), R.string.allFields, Toast.LENGTH_SHORT).show();
         } else{
@@ -82,15 +82,14 @@ public class AddNewQuestion extends AppCompatActivity {
             String questionIdStr = Integer.toString(questionId);
             examRef.child(examId).child("Question").child(questionIdStr).setValue(question);
 
-            for(Answer answer : answerList){
+            for(Answer answer : answerList) {
                 answer.setQuestion_id(questionId);
                 String answerIdStr = Integer.toString(answer.getId());
                 examRef.child(examId).child("Question").child(questionIdStr)
-                        .child("Answer").child(answerIdStr).setValue(answer) ;
-                setResult(RESULT_OK);
-                finish();
-
+                        .child("Answer").child(answerIdStr).setValue(answer);
             }
+            setResult(RESULT_OK);
+            finish();
 
         }
 

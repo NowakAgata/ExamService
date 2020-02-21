@@ -104,4 +104,10 @@ public class AddQuestion extends AppCompatActivity {
         }
     }
 
+    public void onAnswerDeleteClick(View view) {
+        int index = (int) view.getTag();
+        answerList.remove(index);
+        allAnswersAdapter.notifyDataSetChanged();
+
+    }
 }

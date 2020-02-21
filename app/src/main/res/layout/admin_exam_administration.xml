@@ -16,13 +16,19 @@
         android:layout_marginBottom="32dp"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:text="@string/manage_exams_expl"
+            android:gravity="center"
+            android:textSize="22sp"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="90dp"
             android:layout_gravity="center"
             android:layout_margin="8dp"
             android:background="@drawable/button_filled_with_color_bg"
-            android:text="edit exam details"
+            android:text="@string/see_and_edit_exam"
             android:onClick="editExam"/>
 
         <Button
@@ -32,7 +38,7 @@
             android:layout_margin="8dp"
             android:layout_marginTop="48dp"
             android:background="@drawable/button_filled_with_color_bg"
-            android:text="add new exam"
+            android:text="@string/add_exam"
             android:onClick="addExam"/>
 
         <Button
@@ -41,7 +47,7 @@
             android:layout_gravity="center"
             android:layout_margin="8dp"
             android:background="@drawable/button_filled_with_color_bg"
-            android:text="manage exam's questions and answers"
+            android:text="@string/manage_questions"
             android:onClick="editQuestions"/>
 
         <Button
@@ -50,7 +56,7 @@
             android:layout_gravity="center"
             android:layout_margin="8dp"
             android:background="@drawable/button_filled_with_color_bg"
-            android:text="manage students connected with exam"
+            android:text="@string/manage_students"
             android:onClick="editUserExam"/>
 
         <Button
@@ -59,7 +65,7 @@
             android:layout_gravity="center"
             android:layout_margin="8dp"
             android:background="@drawable/button_filled_with_color_bg"
-            android:text="manage file groups connected with exam"
+            android:text="@string/manage_files"
             android:onClick="editMaterialExam"/>
 
     </LinearLayout>
